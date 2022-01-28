@@ -1,0 +1,59 @@
+.bottom-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--bottom-navbar-height);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--secondary-color);
+}
+
+.bottom-section .back-btn,
+.bottom-section .favorite-btn {
+  cursor: pointer;
+  padding: 3px 10px;
+  font-size: var(--buttons-size);
+  background: transparent;
+  color: white;
+  border-style: none;
+}
+
+.bottom-section .buy-btn {
+  background-color: #4bb164;
+  border-style: none;
+  border-radius: 8px;
+  padding: 5px 8px;
+  color: white;
+  font-weight: 500;
+  -webkit-box-shadow: 0px 4px #397448;
+          box-shadow: 0px 4px #397448;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 996px) {
+  .bottom-section .buy-btn {
+    padding: 5px 3px;
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+
+@media screen and (min-width: 996px) {
+  .bottom-section {
+    width: 70px;
+    height: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+/*# sourceMappingURL=bookBottomNavbar.css.map */
