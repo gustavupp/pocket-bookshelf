@@ -13,7 +13,7 @@ const Card = ({
   language,
   pageCount,
   publishedDate,
-  buyLink = 'No Link',
+  buyLink,
   identifier,
 }) => {
   return (

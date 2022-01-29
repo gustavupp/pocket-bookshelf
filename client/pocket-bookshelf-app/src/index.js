@@ -7,7 +7,10 @@ import reducer from './reducers/reducer'
 import './styles/index.css'
 
 //create redux store
-const store = createStore(reducer)
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //redux dev tools
+)
 
 ReactDOM.render(
   <React.StrictMode>

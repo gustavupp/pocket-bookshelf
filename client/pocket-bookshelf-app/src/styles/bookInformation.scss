@@ -1,0 +1,21 @@
+.middle-section {
+  margin-top: 140px; /*same as top section height*/
+  margin-bottom: var(--bottom-navbar-height); /*same as bottom section height*/
+  padding: 10px;
+  overflow-y: auto;
+  background-color: var(--background-color);
+
+  .description-content {
+    max-width: 1400px;
+    margin: auto;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 996px) {
+  .middle-section {
+    margin-bottom: 0;
+    margin-left: 70px;
+    min-width: 96%;
+  }
+}

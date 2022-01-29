@@ -39,6 +39,5 @@ export const destructureList = (list) => {
       identifier,
     }
   })
-  console.log(newList)
   return newList
 }

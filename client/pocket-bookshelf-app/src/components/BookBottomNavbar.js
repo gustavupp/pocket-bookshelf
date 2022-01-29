@@ -2,7 +2,7 @@ import React from 'react'
 import { FaArrowLeft, FaRegBookmark, FaBookmark } from 'react-icons/fa'
 import '../styles/bookBottomNavbar.css'
 
-const BookBottomNavbar = () => {
+const BookBottomNavbar = ({ buyLink }) => {
   return (
     <div className="bottom-section">
       <button className="back-btn">
@@ -18,10 +18,14 @@ const BookBottomNavbar = () => {
       </button>
       <a
         type="button"
-        href="#"
+        href={buyLink}
         target="_blank"
         className="buy-btn"
-        style={{ background: 'rgb(75, 177, 100)' }}
+        style={
+          buyLink === ' No Link'
+            ? { background: 'rgb(75, 177, 100)' }
+            : { background: 'grey' }
+        }
       >
         BUY BOOK
       </a>

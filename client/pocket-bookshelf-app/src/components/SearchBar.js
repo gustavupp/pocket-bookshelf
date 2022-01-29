@@ -10,7 +10,6 @@ const SearchBar = ({ sendSearchToStore }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const inputValue = searchValue.replace(' ', '+')
-    console.log(inputValue)
     const searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${inputValue}&maxResults=40`
     fetchSearch(searchUrl).then((data) => sendSearchToStore(data))
   }
