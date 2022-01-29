@@ -9,12 +9,13 @@ const MainPage = ({ nyBestSellerList }) => {
   return (
     <main>
       <SearchBar />
+
       <div className="nyList-wrapper-container">
         <h1 className="best-seller-title">Best Sellers</h1>
         <div className="nyList-container">
-          {/* {nyBestSellerList.map((item, index) => {
-            return <Card key={index} />
-          })} */}
+          {nyBestSellerList.map((item, index) => {
+            return <Card key={index} {...item} />
+          })}
         </div>
       </div>
       <BottomNavBar />
@@ -24,7 +25,6 @@ const MainPage = ({ nyBestSellerList }) => {
 
 const mapStateToProps = (state) => {
   const { nyBestSellerList } = state
-
   return { nyBestSellerList }
 }
 

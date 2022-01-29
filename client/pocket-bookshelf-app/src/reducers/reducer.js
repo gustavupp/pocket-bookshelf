@@ -6,7 +6,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_BESTSELLER_LIST':
-      return { nyBestSellerList: action.payload }
+      return { ...state, nyBestSellerList: action.payload }
     default:
       console.log('no such action.type')
       return { state }

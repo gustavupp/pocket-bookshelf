@@ -4,6 +4,7 @@
   .best-seller-title {
     //margin-top: -50px;
     margin-bottom: 20px;
+    text-align: center;
   }
 
   .nyList-container {
@@ -17,12 +18,11 @@
     margin-bottom: var(--bottom-navbar-height);
     place-items: center;
   }
-}
 
-@media screen and (min-width: 680px) {
-  .card-container,
-  .nyList-container {
-    grid-template-columns: repeat(5, 1fr);
-    max-width: 900px;
+  @media screen and (min-width: 680px) {
+    .nyList-container {
+      grid-template-columns: repeat(5, 1fr);
+      max-width: 900px;
+    }
   }
 }

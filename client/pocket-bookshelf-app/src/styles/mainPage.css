@@ -5,6 +5,7 @@
 
 .nyList-wrapper-container .best-seller-title {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .nyList-wrapper-container .nyList-container {
@@ -25,8 +26,7 @@
 }
 
 @media screen and (min-width: 680px) {
-  .card-container,
-  .nyList-container {
+  .nyList-wrapper-container .nyList-container {
     -ms-grid-columns: (1fr)[5];
         grid-template-columns: repeat(5, 1fr);
     max-width: 900px;

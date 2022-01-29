@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { formattedDate } from './utils/date'
 import { fetchISBNS } from './utils/fetchISBNS'
+import BookDetailsPage from './pages/BookDetailsPage'
 
-function App({ state, dispatch }) {
+function App({ dispatch }) {
   useEffect(() => {
     //API_KEY
     const nyTimesApiKey = process.env.REACT_APP_NY_TIMES_API_KEY
@@ -44,13 +45,13 @@ function App({ state, dispatch }) {
         <Route exact path="/">
           <MainPage />
         </Route>
+        <Route exact path="/book/:id" children={<BookDetailsPage />}></Route>
       </Switch>
     </Router>
   )
 }
 
 const mapDispatchToProps = (state) => {
-  console.log(state)
   return { state }
 }
 
