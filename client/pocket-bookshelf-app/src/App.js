@@ -1,18 +1,12 @@
 import { useEffect } from 'react'
 import MainPage from './pages/MainPage'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import reducer from './reducers/reducer'
+import { connect } from 'react-redux'
 import { formattedDate } from './utils/date'
+import { fetchISBNS } from './utils/fetchISBNS'
 
-//create redux store
-const store = createStore(reducer)
-
-function App() {
+function App({ state, dispatch }) {
   useEffect(() => {
-    const { dispatch } = store
-
     //API_KEY
     const nyTimesApiKey = process.env.REACT_APP_NY_TIMES_API_KEY
 
@@ -23,36 +17,41 @@ function App() {
       : ''
 
     if (localStorage.getItem('nyList') && lastFetchedDate === formattedDate()) {
-      //getIsbns(JSON.parse(localStorage.getItem('nyList')))
       dispatch({
         type: 'SET_BESTSELLER_LIST',
         payload: JSON.parse(localStorage.getItem('nyList')),
       })
-      console.log(store.getState())
     } else {
-      console.log('im here')
       fetch(bestSellerUrl)
         .then((response) => response.json())
-        .then((data) => {
-          //getIsbns(JSON.parse(localStorage.getItem('nyList')))
-          localStorage.setItem('nyList', JSON.stringify(data.results.books))
-          localStorage.setItem('Date', formattedDate())
+        .then((nyList) => {
+          fetchISBNS(nyList).then((data) => {
+            dispatch({
+              type: 'SET_BESTSELLER_LIST',
+              payload: data,
+            })
+            localStorage.setItem('nyList', JSON.stringify(data))
+            localStorage.setItem('Date', formattedDate())
+          })
         })
         .catch((error) => console.log(error))
     }
   }, [])
 
   return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <MainPage />
-          </Route>
-        </Switch>
-      </Router>
-    </Provider>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <MainPage />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
-export default App
+const mapDispatchToProps = (state) => {
+  console.log(state)
+  return { state }
+}
+
+export default connect(mapDispatchToProps)(App)
