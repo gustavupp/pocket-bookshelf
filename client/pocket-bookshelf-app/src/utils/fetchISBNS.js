@@ -1,3 +1,5 @@
+import { destructureList } from './destructureList'
+
 export const fetchISBNS = async (nyList) => {
   let arrayOfBooks = nyList.results.books
 
@@ -18,50 +20,14 @@ export const fetchISBNS = async (nyList) => {
     )
   )
 
-  //filter any item that could have return undefined or empty and then destructure every book selecting only what we need
-  newArrayOfBooks = newArrayOfBooks
-    .filter((item) => {
-      if (item.items) {
-        return item
-      }
-    })
-    .map((item) => {
-      let {
-        id,
-        volumeInfo: { categories },
-        volumeInfo: { title },
-        volumeInfo: { subtitle = '' } = {},
-        volumeInfo: { authors },
-        volumeInfo: {
-          imageLinks: {
-            thumbnail = 'https://dummyimage.com/70x100/00f/fff.png&text=No+Cover!',
-          } = {},
-        },
-        volumeInfo: { description },
-        volumeInfo: { language },
-        volumeInfo: { pageCount },
-        volumeInfo: { publishedDate },
-        saleInfo: { buyLink },
-        volumeInfo: {
-          industryIdentifiers: [, identifier],
-        },
-      } = item.items[0]
+  //filter any item that could have return undefined or empty
+  newArrayOfBooks = newArrayOfBooks.filter((item) => {
+    if (item.items) {
+      return item
+    }
+  })
 
-      return {
-        id,
-        categories,
-        title,
-        subtitle,
-        authors,
-        thumbnail,
-        description,
-        language,
-        pageCount,
-        publishedDate,
-        buyLink,
-        identifier,
-      }
-    })
-
+  //then destructure every book selecting only what we need
+  newArrayOfBooks = destructureList(newArrayOfBooks)
   return newArrayOfBooks
 }

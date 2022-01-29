@@ -28,11 +28,10 @@
 
 .card .book-info {
   padding: 2px;
-  cursor: pointer;
 }
 
 .card .book-info p.title {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 @media screen and (min-width: 1100px) {

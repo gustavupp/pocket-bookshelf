@@ -13,7 +13,7 @@ const Card = ({
   language,
   pageCount,
   publishedDate,
-  buyLink,
+  buyLink = 'No Link',
   identifier,
 }) => {
   return (
@@ -32,7 +32,7 @@ const Card = ({
 
       <div className="book-info">
         <p className="title">
-          {title.length > 11 ? title.slice(0, 13) + '...' : title}
+          {title?.length > 11 ? title.slice(0, 13) + '...' : title}
         </p>
       </div>
     </div>

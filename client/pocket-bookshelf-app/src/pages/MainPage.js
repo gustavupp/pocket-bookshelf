@@ -5,17 +5,18 @@ import Card from '../components/Card'
 import { connect } from 'react-redux'
 import '../styles/mainPage.css'
 
-const MainPage = ({ nyBestSellerList }) => {
+const MainPage = ({ nyBestSellerList, searchList, isSearching }) => {
+  let list = isSearching ? searchList : nyBestSellerList
   return (
     <main>
       <SearchBar />
-
       <div className="nyList-wrapper-container">
         <h1 className="best-seller-title">Best Sellers</h1>
         <div className="nyList-container">
-          {nyBestSellerList.map((item, index) => {
-            return <Card key={index} {...item} />
-          })}
+          {list &&
+            list.map((item, index) => {
+              return <Card key={index} {...item} />
+            })}
         </div>
       </div>
       <BottomNavBar />
@@ -24,8 +25,8 @@ const MainPage = ({ nyBestSellerList }) => {
 }
 
 const mapStateToProps = (state) => {
-  const { nyBestSellerList } = state
-  return { nyBestSellerList }
+  const { nyBestSellerList, searchList, isSearching } = state
+  return { nyBestSellerList, searchList, isSearching }
 }
 
 export default connect(mapStateToProps)(MainPage)
