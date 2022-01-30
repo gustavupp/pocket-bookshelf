@@ -20,12 +20,8 @@ export const fetchISBNS = async (nyList) => {
     )
   )
 
-  //filter any item that could have return undefined or empty
-  newArrayOfBooks = newArrayOfBooks.filter((item) => {
-    if (item.items) {
-      return item
-    }
-  })
+  //filter any item that could have return undefined or empty. (sometimes item.items could return undefined and hence wont be returned by the filter method)
+  newArrayOfBooks = newArrayOfBooks.filter((item) => item.items)
 
   //then destructure every book selecting only what we need
   newArrayOfBooks = destructureList(newArrayOfBooks)

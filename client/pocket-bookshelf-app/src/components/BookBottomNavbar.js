@@ -1,9 +1,14 @@
 import React from 'react'
 import { FaArrowLeft, FaRegBookmark, FaBookmark } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 import '../styles/bookBottomNavbar.css'
 
 const BookBottomNavbar = ({ buyLink }) => {
+  //auth0 stuff
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
+  console.log(user)
+
   return (
     <div className="bottom-section">
       <Link to="/" className="back-btn">
@@ -21,6 +26,7 @@ const BookBottomNavbar = ({ buyLink }) => {
         type="button"
         href={buyLink}
         target="_blank"
+        rel="noreferrer"
         className="buy-btn"
         style={
           buyLink !== 'No Link'

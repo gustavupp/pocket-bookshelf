@@ -11,9 +11,9 @@ const MainPage = ({ nyBestSellerList, searchList, isSearching }) => {
   return (
     <main>
       <SearchBar />
-      <div className="nyList-wrapper-container">
+      <div className="card-container-wrapper">
         <h1 className="best-seller-title">Best Sellers</h1>
-        <div className="nyList-container">
+        <div className="card-container">
           {list &&
             list.map((item, index) => {
               return <Card key={index} {...item} />

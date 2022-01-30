@@ -1,10 +1,12 @@
 export const destructureList = (list) => {
   //this verifies if it is destructuring the Best Seller list or the search list because they are nested differently
   let newList = !list.items
-    ? list.map((item) => {
+    ? //this means the list is the best seller titles that were fetched individually
+      list.map((item) => {
         return item.items[0]
       })
-    : list.items
+    : //in this case the list is comming from the search bar
+      list.items
 
   //then, flatten the object leaving just what we need
   newList = newList.map((item) => {
@@ -24,13 +26,15 @@ export const destructureList = (list) => {
       volumeInfo: { description = 'No Description' },
       volumeInfo: { language },
       volumeInfo: { pageCount },
-      volumeInfo: { publishedDate },
-      saleInfo: { buyLink = 'No Link' } = { saleInfo: 'No Sale Info' },
+      volumeInfo: { publishedDate = 'No Published Date' } = {
+        publishedDate: 'No Published Date',
+      },
+      saleInfo: { buyLink = 'No Link' } = { buyLink: 'No Link' },
       volumeInfo: {
         industryIdentifiers: [
           ,
           { identifier = 'No identifier' } = { identifier: 'No identifier' },
-        ] = [, { indetifier: 'No identifier' }],
+        ] = 'No Identifier',
       },
     } = item
 

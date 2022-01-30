@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { formattedDate } from './utils/date'
 import { fetchISBNS } from './utils/fetchISBNS'
 import BookDetailsPage from './pages/BookDetailsPage'
+import BookShelfPage from './pages/BookShelfPage'
 
 function App({ dispatch }) {
   useEffect(() => {
@@ -37,13 +38,16 @@ function App({ dispatch }) {
         })
         .catch((error) => console.log(error))
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <Router>
       <Switch>
         <Route exact path="/">
           <MainPage />
+        </Route>
+        <Route exact path="/shelf">
+          <BookShelfPage />
         </Route>
         <Route exact path="/book/:id" children={<BookDetailsPage />}></Route>
       </Switch>

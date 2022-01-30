@@ -43,7 +43,7 @@ const BookDetailsPage = ({ nyBestSellerList, searchList, isSearching }) => {
                 { identifier = 'No identifier' } = {
                   identifier: 'No identifier',
                 },
-              ] = [, { indetifier: 'No identifier' }],
+              ] = 'No Identifier',
             },
           } = data
           setBookClickedOn({

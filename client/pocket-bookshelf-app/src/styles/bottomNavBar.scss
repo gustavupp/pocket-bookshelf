@@ -2,20 +2,27 @@
   position: fixed;
   display: flex;
   justify-content: space-evenly;
-  //z-index: 102;
+  align-items: center;
   bottom: 0;
   height: var(--bottom-navbar-height);
   width: 100%;
   background-color: var(--secondary-color);
 
-  .my-shelf-btn,
-  .search-section-btn {
+  a.my-shelf-btn,
+  a.search-section-btn {
     background-color: transparent;
     border-style: none;
     padding: 2px 6px;
     color: var(--tertiary-color);
     cursor: pointer;
     font-size: var(--buttons-size);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      padding: 4px 0;
+    }
   }
 
   .search-section-btn {
