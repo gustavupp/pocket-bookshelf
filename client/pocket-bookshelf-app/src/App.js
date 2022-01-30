@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { formattedDate } from './utils/date'
 import { fetchISBNS } from './utils/fetchISBNS'
 import BookDetailsPage from './pages/BookDetailsPage'
-import { destructureList } from './utils/destructureList'
 
 function App({ dispatch }) {
   useEffect(() => {

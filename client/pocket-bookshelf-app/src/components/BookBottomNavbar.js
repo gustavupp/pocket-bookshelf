@@ -1,13 +1,14 @@
 import React from 'react'
 import { FaArrowLeft, FaRegBookmark, FaBookmark } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import '../styles/bookBottomNavbar.css'
 
 const BookBottomNavbar = ({ buyLink }) => {
   return (
     <div className="bottom-section">
-      <button className="back-btn">
+      <Link to="/" className="back-btn">
         <FaArrowLeft />
-      </button>
+      </Link>
       <button className="favorite-btn">
         <span className="not-bookmarked">
           <FaRegBookmark />
@@ -22,11 +23,14 @@ const BookBottomNavbar = ({ buyLink }) => {
         target="_blank"
         className="buy-btn"
         style={
-          buyLink === ' No Link'
+          buyLink !== 'No Link'
             ? { background: 'rgb(75, 177, 100)' }
-            : { background: 'grey' }
+            : {
+                background: 'grey',
+                boxShadow: '0px 4px rgb(85, 85, 85)',
+                pointerEvents: 'none',
+              }
         }
-        disabled={true}
       >
         BUY BOOK
       </a>

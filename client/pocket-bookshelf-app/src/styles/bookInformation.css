@@ -3,7 +3,7 @@
   /*same as top section height*/
   margin-bottom: var(--bottom-navbar-height);
   /*same as bottom section height*/
-  padding: 10px;
+  padding: 15px;
   overflow-y: auto;
   background-color: var(--background-color);
 }
@@ -11,7 +11,7 @@
 .middle-section .description-content {
   max-width: 1400px;
   margin: auto;
-  padding: 10px;
+  padding: 0px;
 }
 
 @media screen and (min-width: 996px) {
@@ -19,6 +19,7 @@
     margin-bottom: 0;
     margin-left: 70px;
     min-width: 96%;
+    text-align: center;
   }
 }
 /*# sourceMappingURL=bookInformation.css.map */
