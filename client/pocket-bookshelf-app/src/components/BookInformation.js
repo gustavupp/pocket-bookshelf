@@ -1,31 +1,41 @@
 import React from 'react'
 import '../styles/bookInformation.css'
-const BookInformation = () => {
+const BookInformation = ({
+  id,
+  categories,
+  title,
+  subtitle,
+  authors,
+  description,
+  language,
+  publishedDate,
+  identifier,
+}) => {
   return (
     <div className="middle-section">
       <h4>TITLE</h4>
-      <p>title of book</p>
+      <p>{title}</p>
       <br />
       <h4>SUBTITLE</h4>
-      <p>books subtiutle</p>
+      <p>{subtitle}</p>
       <br />
       <h4>AUTHORS</h4>
-      <p>authors</p>
+      <p>{authors}</p>
       <br />
       <h4 className="description-title">DESCRIPTION</h4>
-      <p className="description-content">description goes here</p>
+      <p className="description-content">{description}</p>
       <br />
       <h4>CATEGORIES</h4>
-      <p>categoris</p>
+      <p>{categories}</p>
       <br />
       <h4>LANGUAGE</h4>
-      <p>EN</p>
+      <p>{language}</p>
       <br />
       <h4>PUBLISHED DATE</h4>
-      <p>12/12/12</p>
+      <p>{publishedDate}</p>
       <br />
       <h4>ISBN</h4>
-      <p>123434123</p>
+      <p>{identifier}</p>
     </div>
   )
 }

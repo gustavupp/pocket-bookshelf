@@ -26,6 +26,7 @@ const BookBottomNavbar = ({ buyLink }) => {
             ? { background: 'rgb(75, 177, 100)' }
             : { background: 'grey' }
         }
+        disabled={true}
       >
         BUY BOOK
       </a>

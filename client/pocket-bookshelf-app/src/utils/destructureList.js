@@ -1,9 +1,19 @@
 export const destructureList = (list) => {
-  let newList = list.items.map((item) => {
+  //this verifies if it is destructuring the Best Seller list or the search list because they are nested differently
+  let newList = !list.items
+    ? list.map((item) => {
+        return item.items[0]
+      })
+    : list.items
+
+  //then, flatten the object leaving just what we need
+  newList = newList.map((item) => {
     let {
       id,
-      volumeInfo: { categories = 'Uncategorized' },
-      volumeInfo: { title },
+      volumeInfo: { categories = 'Uncategorized' } = {
+        categories: 'No Category',
+      },
+      volumeInfo: { title = 'No title available' },
       volumeInfo: { subtitle = 'No Subtitle' } = {},
       volumeInfo: { authors },
       volumeInfo: {
@@ -39,5 +49,6 @@ export const destructureList = (list) => {
       identifier,
     }
   })
+
   return newList
 }

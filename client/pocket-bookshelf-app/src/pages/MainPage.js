@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import '../styles/mainPage.css'
 
 const MainPage = ({ nyBestSellerList, searchList, isSearching }) => {
+  //check if handling search list or best seller list
   let list = isSearching ? searchList : nyBestSellerList
   return (
     <main>

@@ -5,10 +5,12 @@ import BookBottomNavbar from '../components/BookBottomNavbar'
 import HeaderBookDetails from '../components/HeaderBookDetails'
 import BookInformation from '../components/BookInformation'
 
-const BookDetailsPage = ({ searchList }) => {
+const BookDetailsPage = ({ nyBestSellerList, searchList, isSearching }) => {
   const { id } = useParams()
 
-  const bookClickedOn = searchList.find((item) => item.id === id)
+  //check if handling search list or best seller list
+  const list = isSearching ? searchList : nyBestSellerList
+  const bookClickedOn = list.find((item) => item.id === id)
 
   return (
     <div>
@@ -20,8 +22,8 @@ const BookDetailsPage = ({ searchList }) => {
 }
 
 const mapStateToProps = (state) => {
-  const { searchList } = state
-  return { searchList }
+  const { searchList, nyBestSellerList, isSearching } = state
+  return { searchList, nyBestSellerList, isSearching }
 }
 
 export default connect(mapStateToProps)(BookDetailsPage)
