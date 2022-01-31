@@ -8,8 +8,8 @@
   width: 100%;
   background-color: var(--secondary-color);
 
-  a.my-shelf-btn,
-  a.search-section-btn {
+  a.search-section-btn,
+  .login-btn {
     background-color: transparent;
     border-style: none;
     padding: 2px 6px;
@@ -22,6 +22,8 @@
 
     p {
       padding: 4px 0;
+      margin-top: -5px;
+      font-size: 13px;
     }
   }
 

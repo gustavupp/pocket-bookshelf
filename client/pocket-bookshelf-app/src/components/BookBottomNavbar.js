@@ -6,21 +6,27 @@ import '../styles/bookBottomNavbar.css'
 
 const BookBottomNavbar = ({ buyLink }) => {
   //auth0 stuff
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
-  console.log(user)
+  const { isAuthenticated, loginWithRedirect, user } = useAuth0()
 
   return (
     <div className="bottom-section">
       <Link to="/" className="back-btn">
         <FaArrowLeft />
       </Link>
-      <button className="favorite-btn">
+      <button
+        className="favorite-btn"
+        onClick={() =>
+          isAuthenticated
+            ? console.log('add book to database')
+            : loginWithRedirect()
+        }
+      >
         <span className="not-bookmarked">
           <FaRegBookmark />
         </span>
-        <span className="bookmarked show-btn">
+        {/* <span className="bookmarked show-btn">
           <FaBookmark />
-        </span>
+        </span> */}
       </button>
       <a
         type="button"

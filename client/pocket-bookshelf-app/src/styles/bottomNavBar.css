@@ -15,8 +15,8 @@
   background-color: var(--secondary-color);
 }
 
-.navbar a.my-shelf-btn,
-.navbar a.search-section-btn {
+.navbar a.search-section-btn,
+.navbar .login-btn {
   background-color: transparent;
   border-style: none;
   padding: 2px 6px;
@@ -35,9 +35,11 @@
           align-items: center;
 }
 
-.navbar a.my-shelf-btn p,
-.navbar a.search-section-btn p {
+.navbar a.search-section-btn p,
+.navbar .login-btn p {
   padding: 4px 0;
+  margin-top: -5px;
+  font-size: 13px;
 }
 
 .navbar .search-section-btn {
