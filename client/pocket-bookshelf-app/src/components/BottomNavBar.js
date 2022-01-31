@@ -10,7 +10,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 const BottomNavBar = ({ isLoggedIn, dispatch }) => {
   //auth0 stuff
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
-  console.log({ user, isAuthenticated })
+
   return (
     <nav className="navbar">
       <Link to="/shelf" className="search-section-btn">

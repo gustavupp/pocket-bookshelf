@@ -2,32 +2,76 @@ import React from 'react'
 import { FaArrowLeft, FaRegBookmark, FaBookmark } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import { postToDb, deleteFromDb } from '../utils/dbQueries'
+import { connect } from 'react-redux'
 import '../styles/bookBottomNavbar.css'
 
-const BookBottomNavbar = ({ buyLink }) => {
+const BookBottomNavbar = ({
+  id,
+  categories,
+  title,
+  subtitle,
+  authors,
+  thumbnail,
+  description,
+  language,
+  pageCount,
+  publishedDate,
+  buyLink,
+  identifier,
+  bookShelf,
+}) => {
   //auth0 stuff
-  const { isAuthenticated, loginWithRedirect, user } = useAuth0()
+  const {
+    isAuthenticated,
+    loginWithRedirect,
+    user: { email = '', sub: userId = '' } = '',
+  } = useAuth0()
+
+  //every time the page is refreshed the book is searched and returned from the databaselist
+  let currentBook = bookShelf && bookShelf.find((item) => item.id === id)
 
   return (
     <div className="bottom-section">
       <Link to="/" className="back-btn">
         <FaArrowLeft />
       </Link>
-      <button
-        className="favorite-btn"
-        onClick={() =>
-          isAuthenticated
-            ? console.log('add book to database')
-            : loginWithRedirect()
-        }
-      >
-        <span className="not-bookmarked">
-          <FaRegBookmark />
-        </span>
-        {/* <span className="bookmarked show-btn">
-          <FaBookmark />
-        </span> */}
-      </button>
+      {currentBook?.id ? (
+        <button className="favorite-btn" onClick={() => deleteFromDb(id)}>
+          <span className="bookmarked">
+            <FaBookmark />
+          </span>
+        </button>
+      ) : (
+        <button
+          className="favorite-btn"
+          onClick={() =>
+            isAuthenticated
+              ? postToDb(
+                  userId,
+                  id,
+                  categories,
+                  title,
+                  subtitle,
+                  authors,
+                  thumbnail,
+                  description,
+                  language,
+                  pageCount,
+                  publishedDate,
+                  buyLink,
+                  identifier,
+                  email
+                )
+              : loginWithRedirect()
+          }
+        >
+          <span className="not-bookmarked">
+            <FaRegBookmark />
+          </span>
+        </button>
+      )}
+
       <a
         type="button"
         href={buyLink}
@@ -50,4 +94,9 @@ const BookBottomNavbar = ({ buyLink }) => {
   )
 }
 
-export default BookBottomNavbar
+const mapStateToProps = (state) => {
+  const { bookShelf } = state
+  return { bookShelf }
+}
+
+export default connect(mapStateToProps)(BookBottomNavbar)

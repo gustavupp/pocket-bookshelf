@@ -2,6 +2,7 @@
 const initialState = {
   nyBestSellerList: [],
   searchList: [],
+  bookShelf: [],
   isSearching: false,
 }
 
@@ -11,6 +12,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, nyBestSellerList: action.payload }
     case 'SEND_SEARCH_TO_STORE':
       return { ...state, searchList: action.payload, isSearching: true }
+    case 'SET_BOOKSHELF':
+      return { ...state, bookShelf: action.payload }
     default:
       console.log('no such action.type')
       return { state }

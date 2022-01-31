@@ -1,24 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import '../styles/card.css'
 
-const Card = ({
-  id,
-  categories,
-  title,
-  subtitle,
-  authors,
-  thumbnail,
-  description,
-  language,
-  pageCount,
-  publishedDate,
-  buyLink,
-  identifier,
-}) => {
+const Card = ({ id, title, thumbnail }) => {
+  let history = useHistory()
+
   return (
     <div className="card">
-      <Link to={`/book/${id}`}>
+      {/* chech the broswer's current path/url to decide where to send user */}
+      <Link
+        to={
+          history.location.pathname === '/'
+            ? `/book/${id}`
+            : `/shelf/book/${id}`
+        }
+      >
         <img
           src={
             thumbnail
