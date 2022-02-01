@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaArrowLeft, FaRegBookmark, FaBookmark } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-import { postToDb, deleteFromDb } from '../utils/dbQueries'
+import { postToDb, deleteFromDb, getBooksFromDb } from '../utils/dbQueries'
 import { connect } from 'react-redux'
 import '../styles/bookBottomNavbar.css'
 
@@ -20,6 +20,7 @@ const BookBottomNavbar = ({
   buyLink,
   identifier,
   bookShelf,
+  dispatch,
 }) => {
   //auth0 stuff
   const {
@@ -37,7 +38,18 @@ const BookBottomNavbar = ({
         <FaArrowLeft />
       </Link>
       {currentBook?.id ? (
-        <button className="favorite-btn" onClick={() => deleteFromDb(id)}>
+        <button
+          className="favorite-btn"
+          onClick={() => {
+            deleteFromDb(id).then(() =>
+              getBooksFromDb(
+                `http://localhost:3002/api/get-books/${userId}`
+              ).then((data) =>
+                dispatch({ type: 'SET_BOOKSHELF', payload: data })
+              )
+            )
+          }}
+        >
           <span className="bookmarked">
             <FaBookmark />
           </span>
@@ -62,6 +74,12 @@ const BookBottomNavbar = ({
                   buyLink,
                   identifier,
                   email
+                ).then(() =>
+                  getBooksFromDb(
+                    `http://localhost:3002/api/get-books/${userId}`
+                  ).then((data) =>
+                    dispatch({ type: 'SET_BOOKSHELF', payload: data })
+                  )
                 )
               : loginWithRedirect()
           }

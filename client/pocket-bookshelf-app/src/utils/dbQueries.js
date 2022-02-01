@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux'
+
 //get
 export const getBooksFromDb = async (url) => {
   try {
@@ -61,11 +63,9 @@ export const postToDb = async (
 
 //delete
 export const deleteFromDb = async (id) => {
-  try {
-    await fetch(`http://localhost:3002/api/delete-book/${id}`, {
-      method: 'DELETE',
-    }).then(console.log('book delete!'))
-  } catch (error) {
-    console.log(error)
-  }
+  await fetch(`http://localhost:3002/api/delete-book/${id}`, {
+    method: 'DELETE',
+  })
+    .then((response) => response.text())
+    .catch((err) => console.log(err))
 }

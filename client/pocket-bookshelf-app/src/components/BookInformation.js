@@ -23,7 +23,10 @@ const BookInformation = ({
       <p>{authors}</p>
       <br />
       <h4 className="description-title">DESCRIPTION</h4>
-      <p className="description-content">{description}</p>
+      <p
+        className="description-content"
+        dangerouslySetInnerHTML={{ __html: description }}
+      ></p>
       <br />
       <h4>CATEGORIES</h4>
       <p>{categories}</p>

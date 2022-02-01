@@ -38,6 +38,8 @@ export const destructureList = (list) => {
       },
     } = item
 
+    //if authors array has more than a single author join then in a single string
+    authors = authors.length > 1 ? authors.join(' ') : authors
     return {
       id,
       categories,
