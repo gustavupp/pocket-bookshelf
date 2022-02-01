@@ -31,7 +31,7 @@ const BookDetailsMyShelf = ({ bookShelf, dispatch }) => {
       )
     }
   }, [bookShelf])
-  console.log(bookClickedOn)
+
   return (
     <div>
       <HeaderBookDetails {...bookClickedOn} />
