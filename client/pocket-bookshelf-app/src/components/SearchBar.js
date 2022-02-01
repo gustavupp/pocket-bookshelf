@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { connect } from 'react-redux'
 import { destructureList } from '../utils/destructureList'
+import { fetchIndividualBook } from '../utils/fetchIndividualBook'
 import '../styles/searchBar.css'
 
 const SearchBar = ({ sendSearchToStore }) => {
@@ -11,14 +12,7 @@ const SearchBar = ({ sendSearchToStore }) => {
     e.preventDefault()
     const inputValue = searchValue.replaceAll(' ', '+')
     const searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${inputValue}&maxResults=40`
-    fetchSearch(searchUrl).then((data) => sendSearchToStore(data))
-  }
-
-  const fetchSearch = async (url) => {
-    const response = await fetch(url)
-    let data = await response.json()
-    data = destructureList(data)
-    return data
+    fetchIndividualBook(searchUrl).then((data) => sendSearchToStore(data))
   }
 
   return (

@@ -6,6 +6,7 @@ import HeaderBookDetails from '../components/HeaderBookDetails'
 import BookInformation from '../components/BookInformation'
 import { getBooksFromDb } from '../utils/dbQueries'
 import { useAuth0 } from '@auth0/auth0-react'
+import { fetchIndividualBook } from '../utils/fetchIndividualBook'
 
 const BookDetailsMyShelf = ({ bookShelf, dispatch }) => {
   const [bookClickedOn, setBookClickedOn] = useState([])
@@ -14,17 +15,23 @@ const BookDetailsMyShelf = ({ bookShelf, dispatch }) => {
   const { id } = useParams()
 
   useEffect(() => {
-    bookShelf
-      ? setBookClickedOn(bookShelf.find((item) => item.id === id))
-      : //if page is refreshed fetch data from the db again and find the book whose id had been passed in
-        getBooksFromDb(`http://localhost:3002/api/get-books/${userId}`).then(
-          (data) => {
-            setBookClickedOn(data.find((item) => item.id === id))
-            console.log({ bookClickedOn, id })
-          }
-        )
-  }, [])
-
+    if (bookShelf) {
+      bookShelf.find((item) => item.id === id)
+        ? setBookClickedOn(bookShelf.find((item) => item.id === id))
+        : fetchIndividualBook(
+            `https://www.googleapis.com/books/v1/volumes/${id}`
+          ).then((data) => setBookClickedOn(data))
+    } else {
+      //if page is refreshed fetch data from the db again and find the book whose id had been passed in
+      getBooksFromDb(`http://localhost:3002/api/get-books/${userId}`).then(
+        (data) => {
+          setBookClickedOn(data.find((item) => item.id === id))
+          console.log({ bookClickedOn, id })
+        }
+      )
+    }
+  }, [bookShelf])
+  console.log(bookClickedOn)
   return (
     <div>
       <HeaderBookDetails {...bookClickedOn} />
