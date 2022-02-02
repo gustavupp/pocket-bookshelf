@@ -2,8 +2,15 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import '../styles/filters.css'
 
-const Filters = ({ bookShelf }) => {
-  const [searchValue, setSearchValue] = useState('')
+const Filters = ({ dispatch, searchFilter }) => {
+  //const [searchValue, setSearchValue] = useState('')
+
+  const handleChange = (e) => {
+    dispatch({
+      type: 'FILTER_BOOKSHELF',
+      payload: { name: e.target.name, value: e.target.value },
+    })
+  }
 
   return (
     <div className="myShelf-top-section">
@@ -13,8 +20,9 @@ const Filters = ({ bookShelf }) => {
             className="myShelf-search"
             type="text"
             placeholder="Search Your Shelf by Title"
-            value={searchValue}
-            onChange={(e) => console.log(e.target.value)}
+            name="search_text"
+            value={searchFilter}
+            onChange={handleChange}
           />
         </form>
       </div>
@@ -23,8 +31,8 @@ const Filters = ({ bookShelf }) => {
 }
 
 const mapStateToProps = (state) => {
-  const { bookShelf } = state
-  return { bookShelf }
+  const { searchFilter } = state
+  return { searchFilter }
 }
 
 export default connect(mapStateToProps)(Filters)

@@ -5,17 +5,17 @@ import { connect } from 'react-redux'
 import Filters from '../components/Filters'
 import '../styles/bookShelfPage.css'
 
-const BookShelfPage = ({ bookShelf, dispatch }) => {
+const BookShelfPage = ({ filteredBookShelf }) => {
   return (
     <main>
       <Filters />
       <div className="card-container-wrapper">
         <h1 className="best-seller-title">
-          My Shelf ({bookShelf?.length} Books)
+          My Shelf ({filteredBookShelf?.length} Books)
         </h1>
         <div className="card-container">
-          {bookShelf &&
-            bookShelf.map((item, index) => {
+          {filteredBookShelf &&
+            filteredBookShelf.map((item, index) => {
               return <Card key={index} {...item} />
             })}
         </div>
@@ -26,8 +26,8 @@ const BookShelfPage = ({ bookShelf, dispatch }) => {
 }
 
 const mapStateToProps = (state) => {
-  const { bookShelf } = state
-  return { bookShelf }
+  const { filteredBookShelf } = state
+  return { filteredBookShelf }
 }
 
 export default connect(mapStateToProps)(BookShelfPage)

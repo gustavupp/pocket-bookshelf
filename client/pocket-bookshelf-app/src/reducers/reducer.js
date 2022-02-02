@@ -4,9 +4,8 @@ const initialState = {
   searchList: [],
   bookShelf: [],
   isSearching: false,
-  filters: {
-    search: '',
-  },
+  filteredBookShelf: [],
+  searchFilter: '',
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,7 +15,23 @@ const reducer = (state = initialState, action) => {
     case 'SEND_SEARCH_TO_STORE':
       return { ...state, searchList: action.payload, isSearching: true }
     case 'SET_BOOKSHELF':
-      return { ...state, bookShelf: action.payload }
+      return {
+        ...state,
+        bookShelf: action.payload,
+        filteredBookShelf: action.payload,
+      }
+    case 'FILTER_BOOKSHELF':
+      console.log({ name: action.payload.name, text: action.payload.value })
+      let tempFilteredList = state.bookShelf
+
+      if (action.payload.name === 'search_text') {
+        tempFilteredList = tempFilteredList.filter((item) =>
+          item.title.toLowerCase().includes(action.payload.value)
+        )
+        console.log(tempFilteredList)
+        return { ...state, filteredBookShelf: tempFilteredList }
+      }
+
     default:
       console.log('no such action.type')
       return { state }
