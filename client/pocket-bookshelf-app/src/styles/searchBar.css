@@ -10,8 +10,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   top: 0;
-  height: 50px;
-  width: 100%;
+  height: 80px;
+  width: 100vw;
   background-color: var(--background-color);
 }
 
@@ -22,7 +22,8 @@
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   height: 30px;
-  width: 290px;
+  width: 80vw;
+  max-width: 850px;
   background-color: #3a3a3a;
   color: var(--font-color);
   font-size: 16px;
@@ -43,12 +44,6 @@
 
 .search-container input.search::placeholder {
   color: var(--font-color);
-}
-
-@media screen and (min-width: 996px) {
-  .search-container input.search {
-    width: 600px;
-  }
 }
 
 .search-container .search-btn {

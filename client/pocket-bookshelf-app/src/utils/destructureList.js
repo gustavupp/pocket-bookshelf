@@ -1,15 +1,5 @@
 export const destructureList = (list) => {
-  //this verifies if we are destructuring the Best Seller list/search list or Individual Book. they are nested differently
-  let newList = !list.items
-    ? //this means that the list is either the best seller list or an individual book (they both don't have the .items key)
-      list ||
-      list.map((item) => {
-        return item.items[0]
-      })
-    : //in this case the list is comming from the search bar
-      list.items
-
-  //check again, but this time it is regarding how we are destructuring if an single book or the other lists
+  let newList = list
   //if it has .id key, then it is a single book...
   if (newList.id) {
     let {
@@ -63,7 +53,13 @@ export const destructureList = (list) => {
       identifier,
     }
   } else {
-    //else is a one of the lists
+    newList = !newList.items //this means that the list is the best seller list, it doesn't have the .items key)
+      ? newList.map((item) => {
+          return item.items[0]
+        })
+      : newList.items //in this case the list is comming from the search bar
+
+    //finally iterate over it and destructure the values we need
     newList = newList.map((item) => {
       let {
         id,

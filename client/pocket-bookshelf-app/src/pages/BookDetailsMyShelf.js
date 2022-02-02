@@ -11,7 +11,7 @@ import { fetchIndividualBook } from '../utils/fetchIndividualBook'
 const BookDetailsMyShelf = ({ bookShelf, dispatch }) => {
   const [bookClickedOn, setBookClickedOn] = useState([])
   //auth0
-  const { isAuthenticated, user: { sub: userId = '' } = '' } = useAuth0()
+  const { user: { sub: userId = '' } = '' } = useAuth0()
   const { id } = useParams()
 
   useEffect(() => {

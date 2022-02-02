@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { connect } from 'react-redux'
-import { destructureList } from '../utils/destructureList'
 import { fetchIndividualBook } from '../utils/fetchIndividualBook'
 import '../styles/searchBar.css'
 

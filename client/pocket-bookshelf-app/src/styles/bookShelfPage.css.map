@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,uBAAuB,CAAC;EACtB,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "bookShelfPage.scss"
+    ],
+    "names": [],
+    "file": "bookShelfPage.css"
+}

@@ -4,6 +4,9 @@ const initialState = {
   searchList: [],
   bookShelf: [],
   isSearching: false,
+  filters: {
+    search: '',
+  },
 }
 
 const reducer = (state = initialState, action) => {
