@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import '../styles/filters.css'
 
 const Filters = ({ dispatch, searchFilter }) => {
-  //const [searchValue, setSearchValue] = useState('')
-
   const handleChange = (e) => {
     dispatch({
       type: 'FILTER_BOOKSHELF',
@@ -31,6 +29,7 @@ const Filters = ({ dispatch, searchFilter }) => {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   const { searchFilter } = state
   return { searchFilter }
 }

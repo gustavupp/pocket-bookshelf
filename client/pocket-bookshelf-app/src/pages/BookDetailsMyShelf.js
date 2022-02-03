@@ -8,7 +8,7 @@ import { getBooksFromDb } from '../utils/dbQueries'
 import { useAuth0 } from '@auth0/auth0-react'
 import { fetchIndividualBook } from '../utils/fetchIndividualBook'
 
-const BookDetailsMyShelf = ({ bookShelf, dispatch }) => {
+const BookDetailsMyShelf = ({ bookShelf }) => {
   const [bookClickedOn, setBookClickedOn] = useState([])
   //auth0
   const { user: { sub: userId = '' } = '' } = useAuth0()
@@ -26,11 +26,10 @@ const BookDetailsMyShelf = ({ bookShelf, dispatch }) => {
       getBooksFromDb(`http://localhost:3002/api/get-books/${userId}`).then(
         (data) => {
           setBookClickedOn(data.find((item) => item.id === id))
-          console.log({ bookClickedOn, id })
         }
       )
     }
-  }, [bookShelf])
+  }, [bookShelf, id, userId])
 
   return (
     <div>

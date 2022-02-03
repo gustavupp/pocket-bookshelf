@@ -31,6 +31,7 @@ function App({ dispatch }) {
         payload: JSON.parse(localStorage.getItem('nyList')),
       })
     } else {
+      dispatch({ type: 'BEST_SELLERS_LOADING', payload: true })
       fetch(bestSellerUrl)
         .then((response) => response.json())
         .then((nyList) => {
@@ -53,7 +54,7 @@ function App({ dispatch }) {
       getBooksFromDb(`http://localhost:3002/api/get-books/${userId}`).then(
         (data) => dispatch({ type: 'SET_BOOKSHELF', payload: data })
       )
-  }, [isAuthenticated])
+  }, [isAuthenticated, userId, dispatch])
 
   return (
     <Router>

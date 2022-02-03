@@ -20,7 +20,7 @@ const BookDetailsPage = ({ nyBestSellerList, searchList, isSearching }) => {
         `https://www.googleapis.com/books/v1/volumes/${id}`
       ).then((data) => setBookClickedOn(data))
     }
-  }, [])
+  }, [id, nyBestSellerList, isSearching, searchList])
 
   return (
     <div>

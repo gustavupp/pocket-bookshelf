@@ -1,13 +1,21 @@
 import React from 'react'
 import SearchBar from '../components/SearchBar'
 import BottomNavBar from '../components/BottomNavBar'
+import Loading from '../components/Loading'
 import Card from '../components/Card'
 import { connect } from 'react-redux'
 import '../styles/mainPage.css'
 
-const MainPage = ({ nyBestSellerList, searchList, isSearching }) => {
+const MainPage = ({
+  nyBestSellerList,
+  searchList,
+  isSearching,
+  isBestSellerListLoading,
+}) => {
   //check if handling search list or best seller list
   let list = isSearching ? searchList : nyBestSellerList
+  if (isBestSellerListLoading || undefined) return <Loading />
+
   return (
     <main>
       <SearchBar />
@@ -26,8 +34,14 @@ const MainPage = ({ nyBestSellerList, searchList, isSearching }) => {
 }
 
 const mapStateToProps = (state) => {
-  const { nyBestSellerList, searchList, isSearching } = state
-  return { nyBestSellerList, searchList, isSearching }
+  const { nyBestSellerList, searchList, isSearching, isBestSellerListLoading } =
+    state
+  return {
+    nyBestSellerList,
+    searchList,
+    isSearching,
+    isBestSellerListLoading,
+  }
 }
 
 export default connect(mapStateToProps)(MainPage)
