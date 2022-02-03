@@ -41,6 +41,7 @@ const BookBottomNavbar = ({
         <button
           className="favorite-btn"
           onClick={() => {
+            dispatch({ type: 'SET_IS_ADDING_OR_REMOVING', payload: true })
             deleteFromDb(id).then(() =>
               getBooksFromDb(
                 `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
@@ -48,6 +49,7 @@ const BookBottomNavbar = ({
                 dispatch({ type: 'SET_BOOKSHELF', payload: data })
               )
             )
+            dispatch({ type: 'SET_IS_ADDING_OR_REMOVING', payload: false })
           }}
         >
           <span className="bookmarked">

@@ -4,6 +4,7 @@ const initialState = {
   searchList: [],
   isSearchListLoading: false,
   isBestSellerListLoading: false,
+  isAddingOrRemovingBook: false,
   bookShelf: [],
   isSearching: false,
   filteredBookShelf: [],
@@ -35,6 +36,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, isSearchListLoading: true }
     case 'BEST_SELLERS_LOADING':
       return { ...state, isBestSellerListLoading: action.payload }
+    case 'SET_IS_ADDING_OR_REMOVING':
+      return { ...state, isAddingOrRemovingBook: action.payload }
     case 'FILTER_BOOKSHELF':
       //if statement setup is for when I add more functionalities for the filters
       let tempFilteredList = state.bookShelf
