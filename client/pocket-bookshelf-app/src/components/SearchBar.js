@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { fetchIndividualBook } from '../utils/fetchIndividualBook'
 import '../styles/searchBar.css'
 
-const SearchBar = ({ sendSearchToStore }) => {
+const SearchBar = ({ sendSearchToStore, setSearchListLoading }) => {
   const [searchValue, setSearchValue] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setSearchListLoading()
     const inputValue = searchValue.replaceAll(' ', '+')
     const searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${inputValue}&maxResults=40`
     fetchIndividualBook(searchUrl).then((data) => sendSearchToStore(data))
@@ -36,6 +37,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     sendSearchToStore: (data) =>
       dispatch({ type: 'SEND_SEARCH_TO_STORE', payload: data }),
+    setSearchListLoading: () => dispatch({ type: 'SEARCH_IS_LOADING' }),
   }
 }
 

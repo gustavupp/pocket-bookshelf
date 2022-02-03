@@ -4,6 +4,7 @@ const initialState = {
   searchList: [],
   isSearchListLoading: false,
   isBestSellerListLoading: false,
+  isSearchListLoading: false,
   bookShelf: [],
   isSearching: false,
   filteredBookShelf: [],
@@ -19,13 +20,20 @@ const reducer = (state = initialState, action) => {
         isBestSellerListLoading: false,
       }
     case 'SEND_SEARCH_TO_STORE':
-      return { ...state, searchList: action.payload, isSearching: true }
+      return {
+        ...state,
+        searchList: action.payload,
+        isSearching: true,
+        isSearchListLoading: false,
+      }
     case 'SET_BOOKSHELF':
       return {
         ...state,
         bookShelf: action.payload,
         filteredBookShelf: action.payload,
       }
+    case 'SEARCH_IS_LOADING':
+      return { ...state, isSearchListLoading: true }
     case 'BEST_SELLERS_LOADING':
       return { ...state, isBestSellerListLoading: action.payload }
     case 'FILTER_BOOKSHELF':

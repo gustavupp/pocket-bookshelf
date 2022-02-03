@@ -11,10 +11,28 @@ const MainPage = ({
   searchList,
   isSearching,
   isBestSellerListLoading,
+  isSearchListLoading,
 }) => {
+  if (isBestSellerListLoading)
+    return (
+      <>
+        <SearchBar />
+        <Loading />
+        <BottomNavBar />
+      </>
+    )
+
+  if (isSearchListLoading)
+    return (
+      <>
+        <SearchBar />
+        <Loading />
+        <BottomNavBar />
+      </>
+    )
+
   //check if handling search list or best seller list
   let list = isSearching ? searchList : nyBestSellerList
-  if (isBestSellerListLoading || undefined) return <Loading />
 
   return (
     <main>
@@ -34,13 +52,19 @@ const MainPage = ({
 }
 
 const mapStateToProps = (state) => {
-  const { nyBestSellerList, searchList, isSearching, isBestSellerListLoading } =
-    state
+  const {
+    nyBestSellerList,
+    searchList,
+    isSearching,
+    isBestSellerListLoading,
+    isSearchListLoading,
+  } = state
   return {
     nyBestSellerList,
     searchList,
     isSearching,
     isBestSellerListLoading,
+    isSearchListLoading,
   }
 }
 
