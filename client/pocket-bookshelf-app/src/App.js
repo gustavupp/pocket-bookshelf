@@ -51,9 +51,9 @@ function App({ dispatch }) {
   useEffect(() => {
     //get all books from database
     isAuthenticated &&
-      getBooksFromDb(`http://localhost:3002/api/get-books/${userId}`).then(
-        (data) => dispatch({ type: 'SET_BOOKSHELF', payload: data })
-      )
+      getBooksFromDb(
+        `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
+      ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
   }, [isAuthenticated, userId, dispatch])
 
   return (

@@ -43,7 +43,7 @@ const BookBottomNavbar = ({
           onClick={() => {
             deleteFromDb(id).then(() =>
               getBooksFromDb(
-                `http://localhost:3002/api/get-books/${userId}`
+                `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
               ).then((data) =>
                 dispatch({ type: 'SET_BOOKSHELF', payload: data })
               )
@@ -76,7 +76,7 @@ const BookBottomNavbar = ({
                   email
                 ).then(() =>
                   getBooksFromDb(
-                    `http://localhost:3002/api/get-books/${userId}`
+                    `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
                   ).then((data) =>
                     dispatch({ type: 'SET_BOOKSHELF', payload: data })
                   )

@@ -51,9 +51,10 @@ export const postToDb = async (
   }
 
   try {
-    await fetch('http://localhost:3002/api/add-book', options).then(() =>
-      console.log('Book Added!')
-    )
+    await fetch(
+      'https://pocket-bookshelf.herokuapp.com/api/add-book',
+      options
+    ).then(() => console.log('Book Added!'))
   } catch (error) {
     console.log(error)
   }
@@ -61,7 +62,7 @@ export const postToDb = async (
 
 //delete
 export const deleteFromDb = async (id) => {
-  await fetch(`http://localhost:3002/api/delete-book/${id}`, {
+  await fetch(`https://pocket-bookshelf.herokuapp.com/api/delete-book/${id}`, {
     method: 'DELETE',
   })
     .then((response) => response.text())

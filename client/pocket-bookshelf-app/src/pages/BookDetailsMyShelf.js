@@ -23,11 +23,11 @@ const BookDetailsMyShelf = ({ bookShelf }) => {
           ).then((data) => setBookClickedOn(data))
     } else {
       //if page is refreshed fetch data from the db again and find the book whose id had been passed in
-      getBooksFromDb(`http://localhost:3002/api/get-books/${userId}`).then(
-        (data) => {
-          setBookClickedOn(data.find((item) => item.id === id))
-        }
-      )
+      getBooksFromDb(
+        `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
+      ).then((data) => {
+        setBookClickedOn(data.find((item) => item.id === id))
+      })
     }
   }, [bookShelf, id, userId])
 
