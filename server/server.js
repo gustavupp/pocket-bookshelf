@@ -7,14 +7,12 @@ app.use(express.json())
 
 /****************************mysql connection*********************************/
 const mysql = require('mysql')
-//const { response } = require('express')
 const db = mysql.createConnection({
   user: 'b2caf6c8f260e5',
   host: 'us-cdbr-east-05.cleardb.net',
   password: '0a6d91fa',
   database: 'heroku_d4c34159e37c037',
 })
-//mysql: db.connect()
 /****************************mysql connection*********************************/
 
 const PORT = process.env.PORT || 3002
