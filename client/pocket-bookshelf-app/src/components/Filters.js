@@ -29,7 +29,6 @@ const Filters = ({ dispatch, searchFilter }) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   const { searchFilter } = state
   return { searchFilter }
 }

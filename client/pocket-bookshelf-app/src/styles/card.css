@@ -17,7 +17,7 @@
   width: 90px;
   height: 120px;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 @media screen and (min-width: 900px) {
@@ -28,7 +28,7 @@
 }
 
 .card .book-info {
-  padding: 2px;
+  margin-bottom: 10px;
 }
 
 .card .book-info p.title {

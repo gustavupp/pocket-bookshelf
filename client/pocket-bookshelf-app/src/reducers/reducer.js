@@ -4,7 +4,6 @@ const initialState = {
   searchList: [],
   isSearchListLoading: false,
   isBestSellerListLoading: false,
-  isSearchListLoading: false,
   bookShelf: [],
   isSearching: false,
   filteredBookShelf: [],

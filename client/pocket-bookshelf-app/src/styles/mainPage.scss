@@ -2,7 +2,6 @@
   margin-top: 55px; /*height of fixed search bar*/
 
   .best-seller-title {
-    //margin-top: -50px;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -19,7 +18,13 @@
     place-items: center;
   }
 
-  @media screen and (min-width: 680px) {
+  @media screen and (min-width: 600px) {
+    .card-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 730px) {
     .card-container {
       grid-template-columns: repeat(5, 1fr);
       max-width: 900px;

@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-require('dotenv').config()
 
 app.use(cors())
 app.use(express.json())
@@ -19,8 +18,9 @@ mysql: db.connect()
 /****************************mysql connection*********************************/
 
 const PORT = process.env.PORT || 3002
-app.listen(PORT, () => {
-  console.log(`Server Listening on port ${PORT}`)
+app.listen(PORT, (err) => {
+  if (err) console.log(err)
+  else console.log(`Server Listening on port ${PORT}`)
 })
 
 //get request endpoint

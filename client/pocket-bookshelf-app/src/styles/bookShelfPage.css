@@ -1,4 +1,8 @@
 .card-container-wrapper {
   margin-top: 80px;
 }
+
+.card-container-wrapper p {
+  text-align: center;
+}
 /*# sourceMappingURL=bookShelfPage.css.map */
