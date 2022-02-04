@@ -4,12 +4,11 @@ import { connect } from 'react-redux'
 import BookBottomNavbar from '../components/BookBottomNavbar'
 import HeaderBookDetails from '../components/HeaderBookDetails'
 import BookInformation from '../components/BookInformation'
-import Loading from '../components/Loading'
 import { getBooksFromDb } from '../utils/dbQueries'
 import { useAuth0 } from '@auth0/auth0-react'
 import { fetchIndividualBook } from '../utils/fetchIndividualBook'
 
-const BookDetailsMyShelf = ({ bookShelf, isAddingOrRemovingBook }) => {
+const BookDetailsMyShelf = ({ bookShelf }) => {
   const [bookClickedOn, setBookClickedOn] = useState([])
   //auth0
   const { user: { sub: userId = '' } = '' } = useAuth0()
@@ -32,15 +31,6 @@ const BookDetailsMyShelf = ({ bookShelf, isAddingOrRemovingBook }) => {
     }
   }, [bookShelf, id, userId])
 
-  if (isAddingOrRemovingBook)
-    return (
-      <div>
-        <HeaderBookDetails {...bookClickedOn} />
-        <Loading />
-        <BookBottomNavbar {...bookClickedOn} />
-      </div>
-    )
-
   return (
     <div>
       <HeaderBookDetails {...bookClickedOn} />
@@ -51,8 +41,8 @@ const BookDetailsMyShelf = ({ bookShelf, isAddingOrRemovingBook }) => {
 }
 
 const mapStateToProps = (state) => {
-  const { bookShelf, isAddingOrRemovingBook } = state
-  return { bookShelf, isAddingOrRemovingBook }
+  const { bookShelf } = state
+  return { bookShelf }
 }
 
 export default connect(mapStateToProps)(BookDetailsMyShelf)

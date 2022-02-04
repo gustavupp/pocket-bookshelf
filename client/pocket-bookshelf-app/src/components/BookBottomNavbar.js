@@ -22,7 +22,7 @@ const BookBottomNavbar = ({
   identifier,
   bookShelf,
   dispatch,
-  isAddingOrRemovingBook,
+  isAddingBook,
 }) => {
   //auth0 stuff
   const {
@@ -34,62 +34,88 @@ const BookBottomNavbar = ({
   //every time the page is refreshed the book is searched and returned from the databaselist
   let currentBook = bookShelf && bookShelf.find((item) => item.id === id)
 
-  if (isAddingOrRemovingBook) return <LoadingNoText />
+  //function to add book to bookshelf and update state
+  const addBookAndDispatch = () => {
+    dispatch({ type: 'SET_IS_ADDING_BOOK' })
+    deleteFromDb(id).then(() =>
+      getBooksFromDb(
+        `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
+      ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
+    )
+  }
+
+  //function to delete book and update state
+  const deleteBookAndDispatch = () => {
+    if (isAuthenticated) {
+      dispatch({ type: 'SET_IS_ADDING_BOOK' })
+      postToDb(
+        userId,
+        id,
+        categories,
+        title,
+        subtitle,
+        authors,
+        thumbnail,
+        description,
+        language,
+        pageCount,
+        publishedDate,
+        buyLink,
+        identifier,
+        email
+      ).then(() =>
+        getBooksFromDb(
+          `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
+        ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
+      )
+    } else loginWithRedirect()
+  }
+
+  //when add or remove button is clicked, the loading component is displayed instead of the favorite btn
+  if (isAddingBook)
+    return (
+      <div className="bottom-section">
+        <Link to="/" className="back-btn">
+          <FaArrowLeft />
+        </Link>
+
+        <LoadingNoText />
+
+        <a
+          type="button"
+          href={buyLink}
+          target="_blank"
+          rel="noreferrer"
+          className="buy-btn"
+          style={
+            buyLink !== 'No Link'
+              ? { background: 'rgb(75, 177, 100)' }
+              : {
+                  background: 'grey',
+                  boxShadow: '0px 4px rgb(85, 85, 85)',
+                  pointerEvents: 'none',
+                }
+          }
+        >
+          BUY BOOK
+        </a>
+      </div>
+    )
 
   return (
     <div className="bottom-section">
       <Link to="/" className="back-btn">
         <FaArrowLeft />
       </Link>
+
       {currentBook?.id ? (
-        <button
-          className="favorite-btn"
-          onClick={() => {
-            dispatch({ type: 'SET_IS_ADDING_OR_REMOVING', payload: true })
-            deleteFromDb(id).then(() =>
-              getBooksFromDb(
-                `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
-              ).then((data) =>
-                dispatch({ type: 'SET_BOOKSHELF', payload: data })
-              )
-            )
-            dispatch({ type: 'SET_IS_ADDING_OR_REMOVING', payload: false })
-          }}
-        >
+        <button className="favorite-btn" onClick={addBookAndDispatch}>
           <span className="bookmarked">
             <FaBookmark />
           </span>
         </button>
       ) : (
-        <button
-          className="favorite-btn"
-          onClick={() =>
-            isAuthenticated
-              ? postToDb(
-                  userId,
-                  id,
-                  categories,
-                  title,
-                  subtitle,
-                  authors,
-                  thumbnail,
-                  description,
-                  language,
-                  pageCount,
-                  publishedDate,
-                  buyLink,
-                  identifier,
-                  email
-                ).then(() =>
-                  getBooksFromDb(
-                    `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
-                  ).then((data) =>
-                    dispatch({ type: 'SET_BOOKSHELF', payload: data })
-                  )
-                )
-              : loginWithRedirect()
-          }
-        >
+        <button className="favorite-btn" onClick={deleteBookAndDispatch}>
           <span className="not-bookmarked">
             <FaRegBookmark />
           </span>
@@ -119,8 +145,8 @@ const BookBottomNavbar = ({
 }
 
 const mapStateToProps = (state) => {
-  const { bookShelf, isAddingOrRemovingBook } = state
-  return { bookShelf, isAddingOrRemovingBook }
+  const { bookShelf, isAddingBook } = state
+  return { bookShelf, isAddingBook }
 }
 
 export default connect(mapStateToProps)(BookBottomNavbar)
