@@ -37,8 +37,7 @@ export const destructureList = (list) => {
     authors = authors?.length > 1 ? authors.join(' ') : authors
     //if categories is an array and length > 1, get only the first category
     categories = categories?.length > 1 ? categories[0] : categories
-    //had to add https to the thumbnail link. Was having a mixed content warning and being blocked on several browsers
-    //thumbnail = `https${thumbnail.slice(4)}`
+    //had to recreate the thumbnails image link due to mixed content warning from the original http link
     let thumbnail = `https://books.google.com/books/content?id=${id}&printsec=frontcover&img=1&zoom=1&source=gbs_api`
 
     return {
@@ -99,8 +98,7 @@ export const destructureList = (list) => {
       authors = authors?.length > 1 ? authors.join(' ') : authors
       //if categories is an array and length > 1, get only the first category
       categories = categories?.length > 1 ? categories[0] : categories
-      //had to add https to the thumbnail link. Was having a mixed content warning and being blocked on several browsers
-      //thumbnail = `https${thumbnail.slice(4)}`
+      //had to recreate the thumbnails image link due to mixed content warning from the original http link
       let thumbnail = `https://books.google.com/books/content?id=${id}&printsec=frontcover&img=1&zoom=1&source=gbs_api`
       return {
         id,
