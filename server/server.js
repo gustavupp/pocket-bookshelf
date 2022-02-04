@@ -5,6 +5,19 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json())
 
+//cors Access-Control-Allow-Headers for our website since its from a different domain
+app.use((req, res, next) => {
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    'https://pocket-bookshelf.netlify.app/'
+  )
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
+})
+
 /****************************mysql connection*********************************/
 const mysql = require('mysql')
 const db = mysql.createConnection({
