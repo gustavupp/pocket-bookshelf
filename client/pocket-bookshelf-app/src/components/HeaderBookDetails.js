@@ -1,7 +1,8 @@
 import React from 'react'
 import '../styles/headerBookDetails.css'
 
-const HeaderBookDetails = ({ title, authors, pageCount, thumbnail }) => {
+const HeaderBookDetails = ({ title, authors, pageCount, id }) => {
+  let thumbnail = `https://books.google.com/books/content?id=${id}&printsec=frontcover&img=1&zoom=1&source=gbs_api`
   return (
     <div className="top-section">
       <img src={thumbnail} alt="book cover" />
