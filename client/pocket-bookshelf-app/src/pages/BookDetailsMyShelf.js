@@ -40,6 +40,7 @@ const BookDetailsMyShelf = ({ bookShelf, isAddingOrRemovingBook }) => {
         <BookBottomNavbar {...bookClickedOn} />
       </div>
     )
+
   return (
     <div>
       <HeaderBookDetails {...bookClickedOn} />

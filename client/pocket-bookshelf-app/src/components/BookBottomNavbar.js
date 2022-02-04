@@ -5,6 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { postToDb, deleteFromDb, getBooksFromDb } from '../utils/dbQueries'
 import { connect } from 'react-redux'
 import '../styles/bookBottomNavbar.css'
+import LoadingNoText from './LoadingNoText'
 
 const BookBottomNavbar = ({
   id,
@@ -21,6 +22,7 @@ const BookBottomNavbar = ({
   identifier,
   bookShelf,
   dispatch,
+  isAddingOrRemovingBook,
 }) => {
   //auth0 stuff
   const {
@@ -31,6 +33,8 @@ const BookBottomNavbar = ({
 
   //every time the page is refreshed the book is searched and returned from the databaselist
   let currentBook = bookShelf && bookShelf.find((item) => item.id === id)
+
+  if (isAddingOrRemovingBook) return <LoadingNoText />
 
   return (
     <div className="bottom-section">
@@ -115,8 +119,8 @@ const BookBottomNavbar = ({
 }
 
 const mapStateToProps = (state) => {
-  const { bookShelf } = state
-  return { bookShelf }
+  const { bookShelf, isAddingOrRemovingBook } = state
+  return { bookShelf, isAddingOrRemovingBook }
 }
 
 export default connect(mapStateToProps)(BookBottomNavbar)
