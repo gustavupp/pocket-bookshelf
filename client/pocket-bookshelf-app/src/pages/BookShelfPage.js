@@ -9,7 +9,7 @@ import '../styles/bookShelfPage.css'
 const BookShelfPage = ({ filteredBookShelf = [] }) => {
   //auth0
   const { isAuthenticated, user } = useAuth0()
-  console.log(isAuthenticated, user)
+
   return (
     <main>
       <Filters />

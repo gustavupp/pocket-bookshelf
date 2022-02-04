@@ -16,11 +16,13 @@ const db = mysql.createPool({
 })
 /****************************mysql connection*********************************/
 
-//get request endpoint
-app.get('/api/get-books/:userId', (req, res) => {
-  db.getConnection((err, connection) => {
-    if (err) throw err
-    console.log('connected as id ' + connection.threadId)
+//initiate connection with db
+db.getConnection((err, connection) => {
+  if (err) throw err
+  console.log('connected as id ' + connection.threadId)
+
+  //get request endpoint
+  app.get('/api/get-books/:userId', (req, res) => {
     const { userId } = req.params //get userId from req.params
     db.query('SELECT * FROM books WHERE userId = ?', userId, (err, result) => {
       if (err) console.log(err)
@@ -28,15 +30,8 @@ app.get('/api/get-books/:userId', (req, res) => {
     })
   })
 
-  db.end()
-})
-
-//post request endpoint
-app.post('/api/add-book', (req, res) => {
-  db.getConnection((err, connection) => {
-    if (err) throw err
-    console.log('connected as id ' + connection.threadId)
-
+  //post request endpoint
+  app.post('/api/add-book', (req, res) => {
     let {
       userId,
       id,
@@ -78,14 +73,9 @@ app.post('/api/add-book', (req, res) => {
       }
     )
   })
-  db.end()
-})
 
-//delete request endpoint
-app.delete('/api/delete-book/:id', (req, res) => {
-  db.getConnection((err, connection) => {
-    if (err) throw err
-    console.log('connected as id ' + connection.threadId)
+  //delete request endpoint
+  app.delete('/api/delete-book/:id', (req, res) => {
     const { id } = req.params
 
     db.query('DELETE FROM books WHERE id = ?', id, (err, result) => {
@@ -93,9 +83,9 @@ app.delete('/api/delete-book/:id', (req, res) => {
       else res.send(result)
     })
   })
-  db.end()
 })
 
+//start listening for requests
 const PORT = process.env.PORT || 3002
 app.listen(PORT, (err) => {
   if (err) console.log(err)
