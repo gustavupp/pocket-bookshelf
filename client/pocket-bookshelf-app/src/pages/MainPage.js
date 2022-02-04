@@ -38,7 +38,9 @@ const MainPage = ({
     <main>
       <SearchBar />
       <div className="card-container-wrapper">
-        <h1 className="best-seller-title">Best Sellers</h1>
+        <h1 className="main-page-title">
+          {isSearching ? 'Search Result' : 'Best Sellers'}
+        </h1>
         <div className="card-container">
           {list &&
             list.map((item, index) => {
