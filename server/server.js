@@ -27,6 +27,8 @@ app.get('/api/get-books/:userId', (req, res) => {
       else res.send(result)
     })
   })
+
+  db.end()
 })
 
 //post request endpoint
@@ -76,6 +78,7 @@ app.post('/api/add-book', (req, res) => {
       }
     )
   })
+  db.end()
 })
 
 //delete request endpoint
@@ -90,6 +93,7 @@ app.delete('/api/delete-book/:id', (req, res) => {
       else res.send(result)
     })
   })
+  db.end()
 })
 
 const PORT = process.env.PORT || 3002
