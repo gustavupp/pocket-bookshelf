@@ -62,15 +62,14 @@ function App({ dispatch }) {
         <Route exact path="/">
           <MainPage />
         </Route>
-        <Route exact path="/shelf">
+        <Route path="/shelf">
           <BookShelfPage />
         </Route>
-        <Route
-          exact
-          path="/shelf/book/:id"
-          children={<BookDetailsMyShelf />}
-        ></Route>
-        <Route exact path="/book/:id" children={<BookDetailsPage />}></Route>
+        <Route path="/shelf/book/:id" children={<BookDetailsMyShelf />}></Route>
+        <Route path="/book/:id" children={<BookDetailsPage />}></Route>
+        <Route path="*">
+          <MainPage />
+        </Route>
       </Switch>
     </Router>
   )
