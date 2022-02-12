@@ -62,7 +62,7 @@ function App({ dispatch }) {
         <Route exact path="/">
           <MainPage />
         </Route>
-        <Route path="/shelf">
+        <Route exact path="/shelf">
           <BookShelfPage />
         </Route>
         <Route path="/shelf/book/:id" children={<BookDetailsMyShelf />}></Route>
