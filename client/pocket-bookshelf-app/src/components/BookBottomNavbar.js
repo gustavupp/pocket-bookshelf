@@ -39,7 +39,7 @@ const BookBottomNavbar = ({
     dispatch({ type: 'SET_IS_ADDING_BOOK' })
     deleteFromDb(id).then(() =>
       getBooksFromDb(
-        `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
+        `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
       ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
     )
   }
@@ -64,9 +64,9 @@ const BookBottomNavbar = ({
         identifier,
         email
       ).then(() =>
-        getBooksFromDb(
-          `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
-        ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
+        getBooksFromDb(`http://localhost:3002/api/get-books/${userId}`).then(
+          (data) => dispatch({ type: 'SET_BOOKSHELF', payload: data })
+        )
       )
     } else loginWithRedirect()
   }

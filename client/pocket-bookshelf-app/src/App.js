@@ -52,7 +52,7 @@ function App({ dispatch }) {
     //get all books from database
     isAuthenticated &&
       getBooksFromDb(
-        `https://pocket-bookshelf.herokuapp.com/api/get-books/${userId}`
+        `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
       ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
   }, [isAuthenticated, userId, dispatch])
 

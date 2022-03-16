@@ -35,7 +35,11 @@ const BottomNavBar = () => {
       </Link>
       <button
         className="login-btn"
-        onClick={() => (isAuthenticated ? logout() : loginWithRedirect())}
+        onClick={() =>
+          isAuthenticated
+            ? logout({ returnTo: window.location.origin })
+            : loginWithRedirect()
+        }
       >
         {isAuthenticated ? <BiLogOut /> : <BiLogIn />}
         <p>{isAuthenticated ? 'Logout' : 'Login'}</p>

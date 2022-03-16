@@ -1,6 +1,14 @@
 .card-container-wrapper {
   margin-top: 55px; /*height of fixed search bar*/
 
+  .user-welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 100px 0 35px 0;
+  }
+
   .main-page-title {
     margin-bottom: 40px;
     text-align: center;

@@ -15,9 +15,10 @@ const BookShelfPage = ({ filteredBookShelf = [] }) => {
       <Filters />
       <div className="card-container-wrapper">
         {isAuthenticated ? (
-          <h1 className="main-page-title">
-            My Shelf ({filteredBookShelf?.length} Books)
-          </h1>
+          <h2 className="main-page-title">
+            My Shelf ({filteredBookShelf?.length}{' '}
+            {filteredBookShelf?.length === 1 ? 'Book' : 'Books'})
+          </h2>
         ) : (
           <p>Login to start adding books!</p>
         )}

@@ -40,7 +40,7 @@ const reducer = (state = initialState, action) => {
     case 'SET_IS_ADDING_BOOK':
       return { ...state, isAddingBook: true }
     case 'FILTER_BOOKSHELF':
-      //if statement setup is for when I add more functionalities for the filters
+      //if statement setup is for future filtering functionalities
       let tempFilteredList = state.bookShelf
 
       if (action.payload.name === 'search_text') {
