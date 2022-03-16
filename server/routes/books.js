@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 //get request
-router.get('/api/books/:userId', (req, res) => {
+router.get('/:userId', (req, res) => {
   const { userId } = req.params //get userId from req.params
 
   db.getConnection((err, connection) => {
@@ -22,7 +22,7 @@ router.get('/api/books/:userId', (req, res) => {
 })
 
 //post request
-router.post('/api/books/add', (req, res) => {
+router.post('/add', (req, res) => {
   let {
     userId,
     id,
@@ -73,7 +73,7 @@ router.post('/api/books/add', (req, res) => {
 })
 
 //delete request
-router.delete('/api/books/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.params
 
   db.getConnection((err, connection) => {

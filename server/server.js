@@ -7,7 +7,7 @@ const books = require('./routes/books')
 app.use(cors())
 app.use(express.json())
 
-app.use('/api/books/', books)
+app.use('/api/books', books)
 
 // app.get('/api/get-books/:userId', (req, res) => {
 //   const { userId } = req.params //get userId from req.params
