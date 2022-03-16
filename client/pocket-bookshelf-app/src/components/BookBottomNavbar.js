@@ -64,9 +64,9 @@ const BookBottomNavbar = ({
         identifier,
         email
       ).then(() =>
-        getBooksFromDb(`http://localhost:3002/api/get-books/${userId}`).then(
-          (data) => dispatch({ type: 'SET_BOOKSHELF', payload: data })
-        )
+        getBooksFromDb(
+          `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
+        ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
       )
     } else loginWithRedirect()
   }
