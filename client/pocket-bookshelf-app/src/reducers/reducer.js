@@ -52,7 +52,7 @@ const reducer = (state = initialState, action) => {
       return { ...state }
 
     case 'SORT_BOOKSHELF':
-      let tempSortedBookshelf = [...state.bookShelf]
+      let tempSortedBookshelf = [...state.filteredBookShelf]
 
       if (action.payload === 'date') {
         return { ...state, filteredBookShelf: tempSortedBookshelf }
