@@ -1,13 +1,14 @@
 .myShelf-top-section {
   margin: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: start;
   align-items: center;
   top: 0;
   left: 0;
   width: 100%;
   max-width: 850px;
-  height: 80px;
+  height: 100px;
   background-color: var(--background-color);
 
   .input-div {
@@ -36,9 +37,22 @@
   .dropdown-div {
     margin: auto;
     padding-right: 10px;
+    display: flex;
+    align-items: center;
 
     .dropdown-sort {
-      @extend myShelf-search;
+      border-radius: 3px;
+      height: 30px;
+      border-style: none;
+      background-color: rgb(58, 58, 58);
+      color: var(--font-color);
+      font-size: 16px;
     }
+  }
+}
+
+@media screen and (min-width: 740px) {
+  .myShelf-top-section {
+    flex-direction: row;
   }
 }

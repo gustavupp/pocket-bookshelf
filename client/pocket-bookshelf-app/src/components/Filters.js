@@ -27,6 +27,7 @@ const Filters = ({ dispatch, searchFilter }) => {
         />
       </div>
       <div className="dropdown-div">
+        <label htmlFor="sort">Sort by:&nbsp;</label>
         <select
           onChange={(e) => handleSortChange(e)}
           className="dropdown-sort"
@@ -34,10 +35,10 @@ const Filters = ({ dispatch, searchFilter }) => {
           id="sort"
         >
           <option value="date">Date Added</option>
-          <option value="titleAz">Title(A-Z)</option>
-          <option value="titleZa">Title(Z-A)</option>
-          <option value="authorAz">Author(A-Z)</option>
-          <option value="authorZa">Author(Z-A)</option>
+          <option value="titleAz">Title (A-Z)</option>
+          <option value="titleZa">Title (Z-A)</option>
+          <option value="authorAz">Author (A-Z)</option>
+          <option value="authorZa">Author (Z-A)</option>
         </select>
       </div>
     </div>
