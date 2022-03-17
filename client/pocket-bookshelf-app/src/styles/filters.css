@@ -1,27 +1,30 @@
 .myShelf-top-section {
-  position: fixed;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 850px;
   height: 80px;
   background-color: var(--background-color);
 }
 
-.myShelf-top-section .form-div {
-  width: 90%;
-  max-width: 850px;
+.myShelf-top-section .input-div {
+  margin: auto;
+  padding: 0 10px 0 10px;
+  width: 100%;
+  max-width: 550px;
 }
 
-.myShelf-top-section .form-div .bookShelf-form .myShelf-search {
+.myShelf-top-section .input-div .myShelf-search {
   border-radius: 3px;
   padding-left: 10px;
   height: 30px;
@@ -32,19 +35,34 @@
   font-size: 16px;
 }
 
-.myShelf-top-section .form-div .bookShelf-form .myShelf-search::-webkit-input-placeholder {
+.myShelf-top-section .input-div .myShelf-search::-webkit-input-placeholder {
   color: var(--font-color);
 }
 
-.myShelf-top-section .form-div .bookShelf-form .myShelf-search:-ms-input-placeholder {
+.myShelf-top-section .input-div .myShelf-search:-ms-input-placeholder {
   color: var(--font-color);
 }
 
-.myShelf-top-section .form-div .bookShelf-form .myShelf-search::-ms-input-placeholder {
+.myShelf-top-section .input-div .myShelf-search::-ms-input-placeholder {
   color: var(--font-color);
 }
 
-.myShelf-top-section .form-div .bookShelf-form .myShelf-search::placeholder {
+.myShelf-top-section .input-div .myShelf-search::placeholder {
   color: var(--font-color);
+}
+
+.myShelf-top-section .dropdown-div {
+  margin: auto;
+  padding-right: 10px;
+  max-width: 100px;
+}
+
+.myShelf-top-section .dropdown-div .dropdown-sort {
+  border-style: none;
+  background: #3a3a3a;
+  height: 30px;
+  color: var(--font-color);
+  border-radius: 3px;
+  font-size: 16px;
 }
 /*# sourceMappingURL=filters.css.map */

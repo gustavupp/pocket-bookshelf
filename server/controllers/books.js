@@ -8,7 +8,7 @@ const getBooks = (req, res) => {
     console.log('connected as id ' + connection.threadId)
 
     connection.query(
-      'SELECT * FROM books WHERE userId = ?',
+      'SELECT * FROM books WHERE userId = ? ORDER BY dateAdded DESC',
       userId,
       (err, result) => {
         if (err) console.log(err)

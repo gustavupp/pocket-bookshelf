@@ -11,7 +11,7 @@ const BookShelfPage = ({ filteredBookShelf = [] }) => {
   const { isAuthenticated } = useAuth0()
 
   return (
-    <main>
+    <main className="bookshelf-page-main">
       <Filters />
       <div className="card-container-wrapper">
         {isAuthenticated ? (

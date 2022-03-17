@@ -1,33 +1,44 @@
 .myShelf-top-section {
-  position: fixed;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 850px;
   height: 80px;
   background-color: var(--background-color);
 
-  .form-div {
-    width: 90%;
-    max-width: 850px;
+  .input-div {
+    margin: auto;
+    padding: 0 10px 0 10px;
+    width: 100%;
+    max-width: 550px;
 
-    .bookShelf-form {
-      .myShelf-search {
-        border-radius: 3px;
-        padding-left: 10px;
-        height: 30px;
-        width: 100%;
-        border-style: none;
-        background-color: rgb(58, 58, 58);
+    // .bookShelf-form {
+    .myShelf-search {
+      border-radius: 3px;
+      padding-left: 15px;
+      height: 30px;
+      width: 100%;
+      border-style: none;
+      background-color: rgb(58, 58, 58);
+      color: var(--font-color);
+      font-size: 16px;
+
+      &::placeholder {
         color: var(--font-color);
-        font-size: 16px;
-
-        &::placeholder {
-          color: var(--font-color);
-        }
       }
+    }
+  }
+
+  .dropdown-div {
+    margin: auto;
+    padding-right: 10px;
+
+    .dropdown-sort {
+      @extend myShelf-search;
     }
   }
 }
