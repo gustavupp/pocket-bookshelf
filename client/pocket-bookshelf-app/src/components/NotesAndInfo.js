@@ -1,35 +1,41 @@
 import React, { useState } from 'react'
 import BookInformation from '../components/BookInformation'
 import Notes from './Notes'
+import { connect } from 'react-redux'
 import '../styles/notesAndInfo.css'
 
 const NotesAndInfo = (bookClickedOn) => {
-  const [notes, setNotes] = useState(false)
+  const [isNotes, setIsNotes] = useState(false)
 
   return (
     <>
       <div className="notesandinfo-container">
         <button
           className={`${
-            notes ? 'notesandinfo-info' : 'notesandinfo-notes active-btn'
+            isNotes ? 'notesandinfo-info' : 'notesandinfo-notes active-btn'
           }`}
-          onClick={() => setNotes(false)}
+          onClick={() => setIsNotes(false)}
         >
           INFO
         </button>
         <button
           className={`${
-            notes ? 'notesandinfo-notes active-btn' : 'notesandinfo-notes'
+            isNotes ? 'notesandinfo-notes active-btn' : 'notesandinfo-notes'
           }`}
-          onClick={() => setNotes(true)}
+          onClick={() => setIsNotes(true)}
         >
           NOTES
         </button>
       </div>
       <hr style={{ border: '1px solid var(--secondary-color)' }} />
-      {notes ? <Notes /> : <BookInformation {...bookClickedOn} />}
+
+      {isNotes ? (
+        <Notes {...bookClickedOn} />
+      ) : (
+        <BookInformation {...bookClickedOn} />
+      )}
     </>
   )
 }
 
-export default NotesAndInfo
+export default connect()(NotesAndInfo)

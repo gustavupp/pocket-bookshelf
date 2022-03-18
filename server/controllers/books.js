@@ -88,4 +88,24 @@ const deleteBook = (req, res) => {
   })
 }
 
-module.exports = { getBooks, postBook, deleteBook }
+const updateBook = (req, res) => {
+  let { userId, id, notes } = req.body
+  description = description.replaceAll("'", '`')
+
+  db.getConnection((err, connection) => {
+    if (err) throw err
+    console.log('connected as id ' + connection.threadId)
+
+    connection.query(
+      'UPDATE books SET notes = ? WHERE userId = ? AND id = ?',
+      [notes, userId, id],
+      (err, result) => {
+        if (err) console.log(err)
+        else res.send(result)
+      }
+    )
+    connection.release()
+  })
+}
+
+module.exports = { getBooks, postBook, deleteBook, updateBook }

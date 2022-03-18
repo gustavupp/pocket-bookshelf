@@ -18,6 +18,26 @@
       color: var(--font-color);
     }
   }
+
+  .notes-btn {
+    cursor: pointer;
+    padding: 10px 0;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 900px;
+    color: var(--background-color);
+    font-weight: 700;
+    font-size: 16px;
+    background: var(--search-orange);
+    border-style: none;
+    border-radius: 3px;
+    transition: all 0.5s ease;
+
+    &:hover {
+      background: rgb(175, 107, 4);
+      color: var(--font-color);
+    }
+  }
 }
 
 @media screen and (min-width: 996px) {

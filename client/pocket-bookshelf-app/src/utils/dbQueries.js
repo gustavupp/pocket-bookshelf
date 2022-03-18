@@ -59,14 +59,28 @@ export const postToDb = async (
 
 //delete
 export const deleteFromDb = async (userId, id) => {
-  await fetch(
-    `https://pocket-bookshelf.herokuapp.com/api/books/${userId}/${id}`,
-    {
-      method: 'DELETE',
-    }
-  )
-    .then((response) => response.text())
-    .catch((err) => console.log(err))
+  try {
+    const response = await fetch(
+      `https://pocket-bookshelf.herokuapp.com/api/books/${userId}/${id}`,
+      {
+        method: 'DELETE',
+      }
+    )
+    const data = await response.text()
+    console.log(data)
+  } catch (error) {
+    throw error
+  }
 }
 
-export const updateBookNotes = async (userId, id) => {}
+export const updateBookNotes = async (userId, id, notes) => {
+  try {
+    const response = await fetch(
+      'https://pocket-bookshelf.herokuapp.com/api/books/update'
+    )
+    const data = await response.text()
+    console.log(data)
+  } catch (error) {
+    throw error
+  }
+}
