@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { updateBookNotes, getBooksFromDb } from '../utils/dbQueries'
-import LoadingNoText from './LoadingNoText'
+//import LoadingNoText from './LoadingNoText'
 import '../styles/notes.css'
 
 const Notes = (bookClickedOn, isUpdatingBook) => {
