@@ -33,6 +33,7 @@ const reducer = (state = initialState, action) => {
         bookShelf: action.payload,
         filteredBookShelf: action.payload,
         isAddingBook: false,
+        isUpdatingBook: false,
       }
     case 'SEARCH_IS_LOADING':
       return { ...state, isSearchListLoading: true }
