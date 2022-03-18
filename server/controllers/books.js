@@ -90,7 +90,7 @@ const deleteBook = (req, res) => {
 
 const updateBook = (req, res) => {
   let { userId, id, notes } = req.body
-  description = description.replaceAll("'", '`')
+  notes = notes.replaceAll("'", '`')
 
   db.getConnection((err, connection) => {
     if (err) throw err

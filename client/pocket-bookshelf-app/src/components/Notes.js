@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import { updateBookNotes, getBooksFromDb } from '../utils/dbQueries'
+import LoadingNoText from './LoadingNoText'
 import '../styles/notes.css'
 
-const Notes = (bookClickedOn) => {
+const Notes = (bookClickedOn, isUpdatingBook) => {
+  console.log(isUpdatingBook, bookClickedOn)
   const [bookNotes, setBookNotes] = useState(' ')
-  const { notes = ' ', id, userId } = bookClickedOn
+  const { notes = ' ', id, userId = '', dispatch } = bookClickedOn
 
   useEffect(() => {
     if (notes) setBookNotes(notes)
   }, [notes])
 
   const handleClick = () => {
+    dispatch({ type: 'SET_IS_UPDATING_BOOK', payload: true })
     updateBookNotes(userId, id, bookNotes).then(() =>
       getBooksFromDb(
         `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
@@ -28,6 +32,7 @@ const Notes = (bookClickedOn) => {
         value={bookNotes}
         onChange={(e) => setBookNotes(e.target.value)}
       ></textarea>
+      {}
       <button className="notes-btn" onClick={handleClick}>
         SAVE
       </button>
@@ -35,4 +40,9 @@ const Notes = (bookClickedOn) => {
   )
 }
 
-export default Notes
+const mapStateToProps = (state) => {
+  const { isUpdatingBook } = state
+  return { isUpdatingBook }
+}
+
+export default connect(mapStateToProps)(Notes)
