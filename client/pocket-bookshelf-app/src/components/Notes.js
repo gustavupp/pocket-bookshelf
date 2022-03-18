@@ -8,7 +8,7 @@ const Notes = (bookClickedOn) => {
 
   useEffect(() => {
     if (notes) setBookNotes(notes)
-  }, [])
+  }, [notes])
 
   const handleClick = () => {
     updateBookNotes(userId, id, bookNotes).then(() =>
