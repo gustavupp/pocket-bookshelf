@@ -74,9 +74,18 @@ export const deleteFromDb = async (userId, id) => {
 }
 
 export const updateBookNotes = async (userId, id, notes) => {
+  const options = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+    body: JSON.stringify({ userId, id, notes }),
+  }
   try {
     const response = await fetch(
-      'https://pocket-bookshelf.herokuapp.com/api/books/update'
+      'https://pocket-bookshelf.herokuapp.com/api/books/update',
+      options
     )
     const data = await response.text()
     console.log(data)
