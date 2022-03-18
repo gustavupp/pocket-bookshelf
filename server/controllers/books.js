@@ -70,16 +70,20 @@ const postBook = (req, res) => {
 }
 
 const deleteBook = (req, res) => {
-  const { id } = req.params
+  const { id, userId } = req.params
 
   db.getConnection((err, connection) => {
     if (err) throw err
     console.log('connected as id ' + connection.threadId)
 
-    connection.query('DELETE FROM books WHERE id = ?', id, (err, result) => {
-      if (err) console.log(err)
-      else res.send(result)
-    })
+    connection.query(
+      'DELETE FROM books WHERE userId = ? AND id = ?',
+      [userId, id],
+      (err, result) => {
+        if (err) console.log(err)
+        else res.send(result)
+      }
+    )
     connection.release()
   })
 }

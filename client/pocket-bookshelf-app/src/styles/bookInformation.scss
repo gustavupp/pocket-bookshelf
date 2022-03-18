@@ -1,5 +1,5 @@
 .middle-section {
-  margin-top: 140px; /*same as top section height*/
+  //margin-top: 140px; /*same as top section height*/
   margin-bottom: var(--bottom-navbar-height); /*same as bottom section height*/
   padding: 15px;
   overflow-y: auto;
@@ -9,21 +9,6 @@
     max-width: 1400px;
     margin: auto;
     padding: 10px 0;
-  }
-
-  .book-notes {
-    margin-top: 10px;
-    width: 100%;
-    max-width: 1000px;
-    border-radius: 3px;
-    background-color: rgb(58, 58, 58);
-    color: var(--font-color);
-    font-size: 16px;
-    padding-left: 10px;
-
-    &::placeholder {
-      color: var(--font-color);
-    }
   }
 }
 

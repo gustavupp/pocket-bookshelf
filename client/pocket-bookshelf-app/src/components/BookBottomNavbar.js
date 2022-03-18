@@ -28,24 +28,24 @@ const BookBottomNavbar = ({
   const {
     isAuthenticated,
     loginWithRedirect,
-    user: { email = '', sub: userId = '' } = '',
+    user: { email = '', sub: userId = '' } = {},
   } = useAuth0()
 
   //every time the page is refreshed the book is searched and returned from the databaselist
   let currentBook = bookShelf && bookShelf.find((item) => item.id === id)
 
-  //function to add book to bookshelf and update state
-  const addBookAndDispatch = () => {
+  //function to delete book and update state
+  const deleteBookAndDispatch = () => {
     dispatch({ type: 'SET_IS_ADDING_BOOK' })
-    deleteFromDb(id).then(() =>
+    deleteFromDb(userId, id).then(() =>
       getBooksFromDb(
         `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
       ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
     )
   }
 
-  //function to delete book and update state
-  const deleteBookAndDispatch = () => {
+  //function to add book to bookshelf and update state
+  const addBookAndDispatch = () => {
     if (isAuthenticated) {
       dispatch({ type: 'SET_IS_ADDING_BOOK' })
       postToDb(
@@ -109,13 +109,13 @@ const BookBottomNavbar = ({
       </Link>
 
       {currentBook?.id ? (
-        <button className="favorite-btn" onClick={addBookAndDispatch}>
+        <button className="favorite-btn" onClick={deleteBookAndDispatch}>
           <span className="bookmarked">
             <FaBookmark />
           </span>
         </button>
       ) : (
-        <button className="favorite-btn" onClick={deleteBookAndDispatch}>
+        <button className="favorite-btn" onClick={addBookAndDispatch}>
           <span className="not-bookmarked">
             <FaRegBookmark />
           </span>

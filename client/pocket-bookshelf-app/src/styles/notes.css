@@ -1,0 +1,51 @@
+.notes-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  margin: 25px auto 25px auto;
+}
+
+.notes-container .book-notes {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 3px;
+  background-color: #3a3a3a;
+  color: var(--font-color);
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.notes-container .book-notes::-webkit-input-placeholder {
+  color: var(--font-color);
+}
+
+.notes-container .book-notes:-ms-input-placeholder {
+  color: var(--font-color);
+}
+
+.notes-container .book-notes::-ms-input-placeholder {
+  color: var(--font-color);
+}
+
+.notes-container .book-notes::placeholder {
+  color: var(--font-color);
+}
+
+@media screen and (min-width: 996px) {
+  .notes-container {
+    margin-left: 85px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+/*# sourceMappingURL=notes.css.map */

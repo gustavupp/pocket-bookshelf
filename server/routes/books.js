@@ -9,6 +9,6 @@ router.get('/:userId', getBooks)
 router.post('/add', postBook)
 
 //delete request
-router.delete('/:id', deleteBook)
+router.delete('/:userId/:id', deleteBook)
 
 module.exports = router

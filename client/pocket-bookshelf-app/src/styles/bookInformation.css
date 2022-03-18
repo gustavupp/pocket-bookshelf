@@ -1,6 +1,4 @@
 .middle-section {
-  margin-top: 140px;
-  /*same as top section height*/
   margin-bottom: var(--bottom-navbar-height);
   /*same as bottom section height*/
   padding: 15px;
@@ -12,33 +10,6 @@
   max-width: 1400px;
   margin: auto;
   padding: 10px 0;
-}
-
-.middle-section .book-notes {
-  margin-top: 10px;
-  width: 100%;
-  max-width: 1000px;
-  border-radius: 3px;
-  background-color: #3a3a3a;
-  color: var(--font-color);
-  font-size: 16px;
-  padding-left: 10px;
-}
-
-.middle-section .book-notes::-webkit-input-placeholder {
-  color: var(--font-color);
-}
-
-.middle-section .book-notes:-ms-input-placeholder {
-  color: var(--font-color);
-}
-
-.middle-section .book-notes::-ms-input-placeholder {
-  color: var(--font-color);
-}
-
-.middle-section .book-notes::placeholder {
-  color: var(--font-color);
 }
 
 @media screen and (min-width: 996px) {
