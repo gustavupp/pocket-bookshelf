@@ -40,6 +40,7 @@ const MainPage = ({
           {isAuthenticated ? (
             <>
               <h3>Welcome {nickname || name}!</h3>
+
               <img
                 src={picture}
                 alt="user profile pic"
