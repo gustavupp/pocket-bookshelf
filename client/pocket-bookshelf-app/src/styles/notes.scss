@@ -9,13 +9,13 @@
     width: 100%;
     max-width: 900px;
     border-radius: 3px;
-    background-color: rgb(58, 58, 58);
+    background-color: var(--secondary-color);
     color: var(--font-color);
     font-size: 16px;
     padding-left: 10px;
 
     &::placeholder {
-      color: var(--font-color);
+      color: var(--secondary-color);
     }
   }
 
@@ -34,7 +34,7 @@
     transition: all 0.5s ease;
 
     &:hover {
-      background: rgb(175, 107, 4);
+      background: var(--search-orange);
       color: var(--font-color);
     }
   }

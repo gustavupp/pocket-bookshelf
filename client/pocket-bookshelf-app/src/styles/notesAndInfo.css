@@ -1,5 +1,5 @@
 .notesandinfo-container {
-  margin: 150px 0 25px 0;
+  margin: 150px 0 0px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,12 +14,13 @@
 .notesandinfo-container .notesandinfo-notes,
 .notesandinfo-container .notesandinfo-info {
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 5px 10px 10px 10px;
   border-style: none;
   background-color: transparent;
   color: var(--tertiary-color);
   font-weight: 700;
   font-size: 19px;
+  width: 50%;
   border-bottom: 3px solid transparent;
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;

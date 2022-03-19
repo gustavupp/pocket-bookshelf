@@ -15,26 +15,26 @@
   width: 100%;
   max-width: 900px;
   border-radius: 3px;
-  background-color: #3a3a3a;
+  background-color: var(--secondary-color);
   color: var(--font-color);
   font-size: 16px;
   padding-left: 10px;
 }
 
 .notes-container .book-notes::-webkit-input-placeholder {
-  color: var(--font-color);
+  color: var(--secondary-color);
 }
 
 .notes-container .book-notes:-ms-input-placeholder {
-  color: var(--font-color);
+  color: var(--secondary-color);
 }
 
 .notes-container .book-notes::-ms-input-placeholder {
-  color: var(--font-color);
+  color: var(--secondary-color);
 }
 
 .notes-container .book-notes::placeholder {
-  color: var(--font-color);
+  color: var(--secondary-color);
 }
 
 .notes-container .notes-btn {
@@ -54,7 +54,7 @@
 }
 
 .notes-container .notes-btn:hover {
-  background: #af6b04;
+  background: var(--search-orange);
   color: var(--font-color);
 }
 
