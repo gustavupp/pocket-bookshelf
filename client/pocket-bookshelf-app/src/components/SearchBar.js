@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { connect } from 'react-redux'
-import { fetchIndividualBook } from '../utils/fetchIndividualBook'
+import { googleAPI } from '../utils/googleApiCalls'
 import '../styles/searchBar.css'
 
 const SearchBar = ({ sendSearchToStore, setSearchListLoading }) => {
@@ -10,9 +10,9 @@ const SearchBar = ({ sendSearchToStore, setSearchListLoading }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setSearchListLoading()
-    const inputValue = searchValue.replaceAll(' ', '+')
-    const searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${inputValue}&maxResults=40`
-    fetchIndividualBook(searchUrl).then((data) => sendSearchToStore(data))
+    googleAPI
+      .fetchBookSearch(searchValue)
+      .then((data) => sendSearchToStore(data))
   }
 
   return (

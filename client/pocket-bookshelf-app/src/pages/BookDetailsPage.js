@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import BookBottomNavbar from '../components/BookBottomNavbar'
 import HeaderBookDetails from '../components/HeaderBookDetails'
 import BookInformation from '../components/BookInformation'
-import { fetchIndividualBook } from '../utils/fetchIndividualBook'
+import { googleAPI } from '../utils/googleApiCalls'
 
 const BookDetailsPage = ({ nyBestSellerList, searchList, isSearching }) => {
   const { id } = useParams()
@@ -16,9 +16,7 @@ const BookDetailsPage = ({ nyBestSellerList, searchList, isSearching }) => {
       const list = isSearching ? searchList : nyBestSellerList
       setBookClickedOn(list.find((item) => item.id === id))
     } else {
-      fetchIndividualBook(
-        `https://www.googleapis.com/books/v1/volumes/${id}`
-      ).then((data) => setBookClickedOn(data))
+      googleAPI.fetchIndividualBook(id).then((data) => setBookClickedOn(data))
     }
   }, [id, nyBestSellerList, isSearching, searchList])
 

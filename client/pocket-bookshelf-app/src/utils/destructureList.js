@@ -10,11 +10,6 @@ export const destructureList = (list) => {
       volumeInfo: { title = 'No title available' },
       volumeInfo: { subtitle = 'No Subtitle' } = {},
       volumeInfo: { authors },
-      // volumeInfo: {
-      //   imageLinks: {
-      //     thumbnail = 'https://dummyimage.com/70x100/00f/fff.png&text=No+Cover!',
-      //   } = {},
-      //},
       volumeInfo: { description = 'No Description' },
       volumeInfo: { language },
       volumeInfo: { pageCount },
@@ -71,11 +66,6 @@ export const destructureList = (list) => {
         volumeInfo: { title = 'No title available' },
         volumeInfo: { subtitle = 'No Subtitle' } = {},
         volumeInfo: { authors },
-        // volumeInfo: {
-        //   imageLinks: {
-        //     thumbnail = 'https://dummyimage.com/70x100/00f/fff.png&text=No+Cover!',
-        //   } = {},
-        // },
         volumeInfo: { description = 'No Description' },
         volumeInfo: { language },
         volumeInfo: { pageCount },

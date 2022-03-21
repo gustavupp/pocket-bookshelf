@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { updateBookNotes, getBooksFromDb } from '../utils/dbQueries'
+import { api } from '../utils/APICalls'
 import LoadingNoText from './LoadingNoText'
 import '../styles/notes.css'
 
@@ -14,11 +14,13 @@ const Notes = ({ isUpdatingBook, ...bookClickedOn }) => {
 
   const handleClick = () => {
     dispatch({ type: 'SET_IS_UPDATING_BOOK', payload: true })
-    updateBookNotes(userId, id, bookNotes).then(() =>
-      getBooksFromDb(
-        `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
-      ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
-    )
+    api
+      .updateBookNotes(userId, id, bookNotes)
+      .then(() =>
+        api
+          .getBooksFromDb(userId)
+          .then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
+      )
   }
 
   //dont show the save button if user hasnt changed the value of notes

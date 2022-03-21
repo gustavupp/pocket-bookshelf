@@ -3,11 +3,11 @@ import MainPage from './pages/MainPage'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { formattedDate } from './utils/date'
-import { fetchISBNS } from './utils/fetchISBNS'
+import { googleAPI } from './utils/googleApiCalls'
 import BookDetailsPage from './pages/BookDetailsPage'
 import BookShelfPage from './pages/BookShelfPage'
 import BookDetailsMyShelf from './pages/BookDetailsMyShelf'
-import { getBooksFromDb } from './utils/dbQueries'
+import { api } from './utils/APICalls'
 import { useAuth0 } from '@auth0/auth0-react'
 
 function App({ dispatch }) {
@@ -35,7 +35,7 @@ function App({ dispatch }) {
       fetch(bestSellerUrl)
         .then((response) => response.json())
         .then((nyList) => {
-          fetchISBNS(nyList).then((data) => {
+          googleAPI.fetchISBNS(nyList).then((data) => {
             dispatch({
               type: 'SET_BESTSELLER_LIST',
               payload: data,
@@ -51,9 +51,9 @@ function App({ dispatch }) {
   useEffect(() => {
     //get all books from database
     isAuthenticated &&
-      getBooksFromDb(
-        `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
-      ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
+      api
+        .getBooksFromDb(userId)
+        .then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
   }, [isAuthenticated, userId, dispatch])
 
   return (

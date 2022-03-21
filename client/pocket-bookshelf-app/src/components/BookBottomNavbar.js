@@ -2,7 +2,7 @@ import React from 'react'
 import { FaArrowLeft, FaRegBookmark, FaBookmark } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-import { postToDb, deleteFromDb, getBooksFromDb } from '../utils/dbQueries'
+import { api } from '../utils/APICalls'
 import { connect } from 'react-redux'
 import '../styles/bookBottomNavbar.css'
 import LoadingNoText from './LoadingNoText'
@@ -37,37 +37,41 @@ const BookBottomNavbar = ({
   //function to delete book and update state
   const deleteBookAndDispatch = () => {
     dispatch({ type: 'SET_IS_ADDING_BOOK' })
-    deleteFromDb(userId, id).then(() =>
-      getBooksFromDb(
-        `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
-      ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
-    )
+    api
+      .deleteFromDb(userId, id)
+      .then(() =>
+        api
+          .getBooksFromDb(userId)
+          .then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
+      )
   }
 
   //function to add book to bookshelf and update state
   const addBookAndDispatch = () => {
     if (isAuthenticated) {
       dispatch({ type: 'SET_IS_ADDING_BOOK' })
-      postToDb(
-        userId,
-        id,
-        categories,
-        title,
-        subtitle,
-        authors,
-        thumbnail,
-        description,
-        language,
-        pageCount,
-        publishedDate,
-        buyLink,
-        identifier,
-        email
-      ).then(() =>
-        getBooksFromDb(
-          `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
-        ).then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
-      )
+      api
+        .postToDb(
+          userId,
+          id,
+          categories,
+          title,
+          subtitle,
+          authors,
+          thumbnail,
+          description,
+          language,
+          pageCount,
+          publishedDate,
+          buyLink,
+          identifier,
+          email
+        )
+        .then(() =>
+          api
+            .getBooksFromDb(userId)
+            .then((data) => dispatch({ type: 'SET_BOOKSHELF', payload: data }))
+        )
     } else loginWithRedirect()
   }
 
