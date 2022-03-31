@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import '../styles/filters.scss'
+import styles from '../styles/filters.module.scss'
 
 const Filters = ({ dispatch, searchFilter }) => {
   const handleFilterChange = (e) => {
@@ -15,10 +15,10 @@ const Filters = ({ dispatch, searchFilter }) => {
   }
 
   return (
-    <div className="myShelf-top-section">
-      <div className="input-div">
+    <section className={styles.wrapper}>
+      <div className={styles.inputContainer}>
         <input
-          className="myShelf-search"
+          className={styles.search}
           type="text"
           placeholder="Search Your Shelf by Title"
           name="search_text"
@@ -26,11 +26,11 @@ const Filters = ({ dispatch, searchFilter }) => {
           onChange={handleFilterChange}
         />
       </div>
-      <div className="dropdown-div">
-        <label htmlFor="sort">Sort by:&nbsp;</label>
+      <div className={styles.dropdownContainer}>
+        <label htmlFor={styles.sort}>Sort by:&nbsp;</label>
         <select
           onChange={(e) => handleSortChange(e)}
-          className="dropdown-sort"
+          className={styles.sort}
           name="sort"
           id="sort"
         >
@@ -41,7 +41,7 @@ const Filters = ({ dispatch, searchFilter }) => {
           <option value="authorZa">Author (Z-A)</option>
         </select>
       </div>
-    </div>
+    </section>
   )
 }
 

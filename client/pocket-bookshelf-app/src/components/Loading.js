@@ -1,11 +1,11 @@
 import React from 'react'
-import '../styles/loading.scss'
+import styles from '../styles/loading.module.scss'
 
 const Loading = () => {
   return (
-    <div className="loading-component-div">
-      <div className="loading-animation"></div>
-      <h3>Loading...</h3>
+    <div className={styles.container}>
+      <div className={styles.animation}></div>
+      <h3 className={styles.text}>Loading...</h3>
     </div>
   )
 }

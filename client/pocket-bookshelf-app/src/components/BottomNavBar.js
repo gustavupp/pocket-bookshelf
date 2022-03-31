@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa'
 import { BiLogIn, BiLogOut } from 'react-icons/bi'
 import { Link, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import '../styles/bottomNavBar.scss'
+import styles from '../styles/bottomNavBar.module.scss'
 import { useAuth0 } from '@auth0/auth0-react'
 
 const BottomNavBar = () => {
@@ -16,25 +16,25 @@ const BottomNavBar = () => {
   } = useHistory()
 
   return (
-    <nav className="navbar">
+    <nav className={styles.navbar}>
       <Link
         to="/shelf"
-        className="search-section-btn"
+        className={styles.searchBtn}
         style={{ color: pathname === '/shelf' && 'white' }}
       >
         <ImBooks />
-        <p>Shelf</p>
+        <p className={styles.iconLabel}>Shelf</p>
       </Link>
       <Link
         to="/"
-        className="search-section-btn"
+        className={styles.searchBtn}
         style={{ color: pathname === '/' && 'white' }}
       >
         <FaSearch />
-        <p>Search</p>
+        <p className={styles.iconLabel}>Search</p>
       </Link>
       <button
-        className="login-btn"
+        className={styles.loginBtn}
         onClick={() =>
           isAuthenticated
             ? logout({ returnTo: window.location.origin })
@@ -42,7 +42,9 @@ const BottomNavBar = () => {
         }
       >
         {isAuthenticated ? <BiLogOut /> : <BiLogIn />}
-        <p>{isAuthenticated ? 'Logout' : 'Login'}</p>
+        <p className={styles.iconLabel}>
+          {isAuthenticated ? 'Logout' : 'Login'}
+        </p>
       </button>
     </nav>
   )

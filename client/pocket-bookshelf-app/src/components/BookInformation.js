@@ -1,8 +1,7 @@
 import React from 'react'
-import '../styles/bookInformation.scss'
+import styles from '../styles/bookInformation.module.scss'
 
 const BookInformation = ({
-  id,
   categories,
   title,
   subtitle,
@@ -13,7 +12,7 @@ const BookInformation = ({
   identifier,
 }) => {
   return (
-    <div className="middle-section">
+    <div className={styles.middleSection}>
       <h4>TITLE</h4>
       <p>{title}</p>
       <br />
@@ -23,9 +22,9 @@ const BookInformation = ({
       <h4>AUTHORS</h4>
       <p>{authors}</p>
       <br />
-      <h4 className="description-title">DESCRIPTION</h4>
+      <h4>DESCRIPTION</h4>
       <p
-        className="description-content"
+        className={styles.description}
         dangerouslySetInnerHTML={{ __html: description }}
       ></p>
       <br />
