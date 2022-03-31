@@ -1,10 +1,10 @@
-.notes-container {
+.container {
   display: flex;
   flex-direction: column;
   width: 90%;
   margin: 25px auto 25px auto;
 
-  .book-notes {
+  .notes {
     margin-top: 10px;
     width: 100%;
     max-width: 900px;
@@ -19,7 +19,7 @@
     }
   }
 
-  .notes-btn {
+  .btn {
     cursor: pointer;
     padding: 10px 0;
     margin-top: 10px;
@@ -41,7 +41,7 @@
 }
 
 @media screen and (min-width: 996px) {
-  .notes-container {
+  .container {
     margin-left: 85px;
     justify-content: center;
     align-items: center;

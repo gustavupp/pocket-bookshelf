@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { api } from '../utils/APICalls'
 import LoadingNoText from './LoadingNoText'
-import '../styles/notes.scss'
+import styles from '../styles/notes.module.scss'
 
 const Notes = ({ isUpdatingBook, ...bookClickedOn }) => {
   const [bookNotes, setBookNotes] = useState('')
@@ -26,10 +26,10 @@ const Notes = ({ isUpdatingBook, ...bookClickedOn }) => {
   //dont show the save button if user hasnt changed the value of notes
   if (notes === bookNotes || (bookNotes === '' && notes === null)) {
     return (
-      <div className="notes-container">
+      <div className={styles.container}>
         <h4>NOTES</h4>
         <textarea
-          className="book-notes"
+          className={styles.notes}
           rows="6"
           placeholder="Want to add some notes?"
           value={bookNotes}
@@ -40,10 +40,10 @@ const Notes = ({ isUpdatingBook, ...bookClickedOn }) => {
   }
 
   return (
-    <div className="notes-container">
+    <div className={styles.container}>
       <h4>NOTES</h4>
       <textarea
-        className="book-notes"
+        className={styles.notes}
         rows="6"
         placeholder="Want to add some notes?"
         value={bookNotes}
@@ -56,7 +56,7 @@ const Notes = ({ isUpdatingBook, ...bookClickedOn }) => {
           <LoadingNoText />
         </>
       ) : (
-        <button className="notes-btn" onClick={handleClick}>
+        <button className={styles.btn} onClick={handleClick}>
           SAVE
         </button>
       )}

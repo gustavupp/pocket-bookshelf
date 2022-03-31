@@ -1,11 +1,11 @@
-.notesandinfo-container {
+.container {
   margin: 150px 0 0px 0; //margin top has height same as the fixed HeaderBookDetails + 10px
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 
-  .notesandinfo-notes,
-  .notesandinfo-info {
+  .notes,
+  .info {
     cursor: pointer;
     padding: 5px 10px 10px 10px;
     border-style: none;
@@ -23,9 +23,13 @@
     }
   }
 
-  .active-btn.notesandinfo-info,
-  .active-btn.notesandinfo-notes {
+  .active {
+    @extend .notes;
     color: var(--font-color);
     border-bottom: 3px solid var(--font-color);
   }
+}
+
+.line {
+  border: 1px solid var(--secondary-color);
 }

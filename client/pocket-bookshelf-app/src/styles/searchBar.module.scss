@@ -1,4 +1,4 @@
-.search-container {
+.container {
   position: fixed;
   display: flex;
   align-items: center;
@@ -27,7 +27,7 @@
     }
   }
 
-  .search-btn {
+  .btn {
     vertical-align: middle;
     background-color: var(--search-orange);
     border-top-right-radius: 4px;

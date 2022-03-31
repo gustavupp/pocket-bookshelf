@@ -1,0 +1,42 @@
+.wrapper {
+  margin-top: 55px; /*height of fixed search bar*/
+}
+
+.userContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 100px 0 35px 0;
+}
+
+.title {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: var(--bottom-navbar-height);
+  place-items: center;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: 730px) {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 900px;
+  }
+}
+
+.userImg {
+  border-radius: 50%;
+  width: 60px;
+  margin-left: 15px;
+}

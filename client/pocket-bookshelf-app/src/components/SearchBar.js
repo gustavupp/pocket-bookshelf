@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { connect } from 'react-redux'
 import { googleAPI } from '../utils/googleApiCalls'
-import '../styles/searchBar.scss'
+import styles from '../styles/searchBar.module.scss'
 
 const SearchBar = ({ sendSearchToStore, setSearchListLoading }) => {
   const [searchValue, setSearchValue] = useState('')
@@ -16,16 +16,16 @@ const SearchBar = ({ sendSearchToStore, setSearchListLoading }) => {
   }
 
   return (
-    <div className="search-container">
+    <div className={styles.container}>
       <form action="submit" onSubmit={handleSubmit}>
         <input
-          className="search"
+          className={styles.search}
           type="text"
           placeholder="Search by Title, Author or ISBN"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <button className="search-btn">
+        <button className={styles.btn}>
           <FaSearch />
         </button>
       </form>
