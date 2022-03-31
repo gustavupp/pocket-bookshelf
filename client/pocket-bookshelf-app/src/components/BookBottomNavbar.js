@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { api } from '../utils/APICalls'
 import { connect } from 'react-redux'
-import '../styles/bookBottomNavbar.css'
+import '../styles/bookBottomNavbar.scss'
 import LoadingNoText from './LoadingNoText'
 
 const BookBottomNavbar = ({

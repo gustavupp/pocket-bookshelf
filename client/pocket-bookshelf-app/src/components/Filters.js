@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import '../styles/filters.css'
+import '../styles/filters.scss'
 
 const Filters = ({ dispatch, searchFilter }) => {
   const handleFilterChange = (e) => {

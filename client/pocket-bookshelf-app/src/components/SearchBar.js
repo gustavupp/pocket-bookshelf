@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { connect } from 'react-redux'
 import { googleAPI } from '../utils/googleApiCalls'
-import '../styles/searchBar.css'
+import '../styles/searchBar.scss'
 
 const SearchBar = ({ sendSearchToStore, setSearchListLoading }) => {
   const [searchValue, setSearchValue] = useState('')

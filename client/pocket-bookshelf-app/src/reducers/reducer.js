@@ -63,8 +63,11 @@ const reducer = (state = initialState, action) => {
       let tempSortedBookshelf = [...state.filteredBookShelf]
 
       if (action.payload === 'date') {
-        return { ...state, filteredBookShelf: tempSortedBookshelf }
+        tempSortedBookshelf = tempSortedBookshelf.sort((a, b) =>
+          b.dateAdded.localeCompare(a.dateAdded)
+        )
       }
+
       if (action.payload === 'titleAz') {
         tempSortedBookshelf = tempSortedBookshelf.sort((a, b) =>
           a.title.localeCompare(b.title)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import '../styles/card.css'
+import '../styles/card.scss'
 
 const Card = ({ id, title, thumbnail }) => {
   let history = useHistory()

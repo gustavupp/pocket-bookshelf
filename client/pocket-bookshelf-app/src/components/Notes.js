@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { api } from '../utils/APICalls'
 import LoadingNoText from './LoadingNoText'
-import '../styles/notes.css'
+import '../styles/notes.scss'
 
 const Notes = ({ isUpdatingBook, ...bookClickedOn }) => {
-  const [bookNotes, setBookNotes] = useState(' ')
+  const [bookNotes, setBookNotes] = useState('')
   const { notes = '', id, userId = '', dispatch } = bookClickedOn
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Notes = ({ isUpdatingBook, ...bookClickedOn }) => {
   }
 
   //dont show the save button if user hasnt changed the value of notes
-  if (notes === bookNotes) {
+  if (notes === bookNotes || (bookNotes === '' && notes === null)) {
     return (
       <div className="notes-container">
         <h4>NOTES</h4>

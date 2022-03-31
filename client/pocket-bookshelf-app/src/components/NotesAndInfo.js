@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import BookInformation from '../components/BookInformation'
 import Notes from './Notes'
 import { connect } from 'react-redux'
-import '../styles/notesAndInfo.css'
+import '../styles/notesAndInfo.scss'
 
 const NotesAndInfo = (bookClickedOn) => {
   const [isNotes, setIsNotes] = useState(false)

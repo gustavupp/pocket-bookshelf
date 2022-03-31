@@ -4,7 +4,7 @@ import Card from '../components/Card'
 import { connect } from 'react-redux'
 import Filters from '../components/Filters'
 import { useAuth0 } from '@auth0/auth0-react'
-import '../styles/bookShelfPage.css'
+import '../styles/bookShelfPage.scss'
 
 const BookShelfPage = ({ filteredBookShelf = [] }) => {
   //auth0
@@ -12,24 +12,29 @@ const BookShelfPage = ({ filteredBookShelf = [] }) => {
 
   return (
     <main className="bookshelf-page-main">
-      <Filters />
-      <div className="card-container-wrapper">
-        {isAuthenticated ? (
-          <h2 className="main-page-title">
-            My Shelf ({filteredBookShelf?.length}
-            {filteredBookShelf?.length === 1 ? 'Book' : 'Books'})
-          </h2>
-        ) : (
-          <p>Login to start adding books!</p>
-        )}
+      {isAuthenticated ? (
+        <>
+          <Filters />
+          <div className="card-container-wrapper">
+            <h2 className="main-page-title">
+              My Shelf ({filteredBookShelf?.length}
+              {filteredBookShelf?.length === 1 ? 'Book' : 'Books'})
+            </h2>
 
-        <div className="card-container">
-          {filteredBookShelf &&
-            filteredBookShelf.map((item, index) => {
-              return <Card key={index} {...item} />
-            })}
+            <div className="card-container">
+              {filteredBookShelf &&
+                filteredBookShelf.map((item, index) => {
+                  return <Card key={index} {...item} />
+                })}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="not-authenticated">
+          <p>Login or Signup to start adding books!</p>
         </div>
-      </div>
+      )}
+
       <BottomNavBar />
     </main>
   )

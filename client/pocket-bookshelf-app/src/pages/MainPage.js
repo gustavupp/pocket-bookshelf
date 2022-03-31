@@ -5,7 +5,7 @@ import Loading from '../components/Loading'
 import Card from '../components/Card'
 import { connect } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
-import '../styles/mainPage.css'
+import '../styles/mainPage.scss'
 
 const MainPage = ({
   nyBestSellerList,

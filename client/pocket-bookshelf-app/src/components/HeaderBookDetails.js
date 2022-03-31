@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/headerBookDetails.css'
+import '../styles/headerBookDetails.scss'
 
 const HeaderBookDetails = ({ title, authors, pageCount, id }) => {
   let thumbnail = `https://books.google.com/books/content?id=${id}&printsec=frontcover&img=1&zoom=1&source=gbs_api`

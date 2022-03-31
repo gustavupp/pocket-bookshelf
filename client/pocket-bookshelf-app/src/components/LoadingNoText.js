@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/loadingNoText.css'
+import '../styles/loadingNoText.scss'
 
 const LoadingNoText = () => {
   return (

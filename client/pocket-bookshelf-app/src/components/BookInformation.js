@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/bookInformation.css'
+import '../styles/bookInformation.scss'
 
 const BookInformation = ({
   id,
