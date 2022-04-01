@@ -125,7 +125,7 @@ const BookBottomNavbar = ({
         className={
           buyLink !== 'No Link'
             ? styles.buyBtn
-            : styles.buyBtn + styles.disabled
+            : `${styles.buyBtn} ${styles.disabled}`
         }
       >
         BUY BOOK
