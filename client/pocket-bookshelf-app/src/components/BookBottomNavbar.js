@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { api } from '../utils/APICalls'
 import { connect } from 'react-redux'
-import '../styles/bookBottomNavbar.scss'
+import styles from '../styles/bookBottomNavbar.module.scss'
 import LoadingNoText from './LoadingNoText'
 
 const BookBottomNavbar = ({
@@ -78,27 +78,19 @@ const BookBottomNavbar = ({
   //when add or remove button is clicked, the loading component is displayed instead of the favorite btn
   if (isAddingBook)
     return (
-      <div className="bottom-section">
-        <Link to="/" className="back-btn">
+      <div className={styles.bottom}>
+        <Link to="/" className={styles.backBtn}>
           <FaArrowLeft />
         </Link>
-
         <LoadingNoText />
-
         <a
-          type="button"
           href={buyLink}
           target="_blank"
           rel="noreferrer"
-          className="buy-btn"
-          style={
+          className={
             buyLink !== 'No Link'
-              ? { background: 'rgb(75, 177, 100)' }
-              : {
-                  background: 'grey',
-                  boxShadow: '0px 4px rgb(85, 85, 85)',
-                  pointerEvents: 'none',
-                }
+              ? styles.buyBtn
+              : styles.buyBtn + styles.disabled
           }
         >
           BUY BOOK
@@ -107,39 +99,33 @@ const BookBottomNavbar = ({
     )
 
   return (
-    <div className="bottom-section">
-      <Link to="/" className="back-btn">
+    <div className={styles.bottom}>
+      <Link to="/" className={styles.backBtn}>
         <FaArrowLeft />
       </Link>
 
       {currentBook?.id ? (
-        <button className="favorite-btn" onClick={deleteBookAndDispatch}>
-          <span className="bookmarked">
+        <button className={styles.favoriteBtn} onClick={deleteBookAndDispatch}>
+          <span>
             <FaBookmark />
           </span>
         </button>
       ) : (
-        <button className="favorite-btn" onClick={addBookAndDispatch}>
-          <span className="not-bookmarked">
+        <button className={styles.favoriteBtn} onClick={addBookAndDispatch}>
+          <span>
             <FaRegBookmark />
           </span>
         </button>
       )}
 
       <a
-        type="button"
         href={buyLink}
         target="_blank"
         rel="noreferrer"
-        className="buy-btn"
-        style={
+        className={
           buyLink !== 'No Link'
-            ? { background: 'rgb(75, 177, 100)' }
-            : {
-                background: 'grey',
-                boxShadow: '0px 4px rgb(85, 85, 85)',
-                pointerEvents: 'none',
-              }
+            ? styles.buyBtn
+            : styles.buyBtn + styles.disabled
         }
       >
         BUY BOOK

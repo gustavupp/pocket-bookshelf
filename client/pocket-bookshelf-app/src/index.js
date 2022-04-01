@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducer from './reducers/reducer'
 import { Auth0Provider } from '@auth0/auth0-react'
-import styles from './styles/index.module.scss'
+import './styles/index.scss'
 
 //create redux store
 const store = createStore(
