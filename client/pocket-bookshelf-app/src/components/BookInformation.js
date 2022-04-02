@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/bookInformation.module.scss'
 
 const BookInformation = ({
@@ -11,6 +11,11 @@ const BookInformation = ({
   publishedDate,
   identifier,
 }) => {
+  const [readMore, setReadMore] = useState(false)
+  let newDescription = readMore
+    ? description
+    : description?.substring(0, 250) + '...'
+
   return (
     <div className={styles.middleSection}>
       <h4>TITLE</h4>
@@ -25,8 +30,11 @@ const BookInformation = ({
       <h4>DESCRIPTION</h4>
       <p
         className={styles.description}
-        dangerouslySetInnerHTML={{ __html: description }}
+        dangerouslySetInnerHTML={{ __html: newDescription }}
       ></p>
+      <h4 onClick={() => setReadMore(!readMore)} className={styles.readmore}>
+        {readMore ? 'Read less' : 'Read more'}
+      </h4>
       <br />
       <h4>CATEGORIES</h4>
       <p>{categories}</p>

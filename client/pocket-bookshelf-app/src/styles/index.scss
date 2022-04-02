@@ -12,6 +12,7 @@
   --secondary-color: rgb(54, 54, 54);
   --tertiary-color: rgb(139, 139, 139);
   --font-color: #f5f6f7;
+  --paragraph-color: rgb(176, 171, 171);
   --bottom-navbar-height: 60px;
   --buttons-size: 20px;
   --search-orange: rgb(243, 168, 71);
@@ -19,7 +20,7 @@
 
 body {
   background-color: var(--background-color);
-  color: var(--font-color);
+
   font-size: 16px;
 }
 
@@ -27,7 +28,19 @@ a {
   text-decoration: none;
 }
 
+p {
+  color: var(--paragraph-color);
+}
+
 h1 {
   font-size: 35px;
   font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--font-color);
 }
