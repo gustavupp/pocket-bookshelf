@@ -14,5 +14,5 @@ app.use('/api/books', books)
 const PORT = process.env.PORT || 3002
 app.listen(PORT, (err) => {
   if (err) console.log(err)
-  else console.log(`Server Listening on port ${PORT}`)
+  else console.log(`Server Listening on port ${PORT}.`)
 })
