@@ -3,7 +3,7 @@ class API {
   async getBooksFromDb(userId) {
     try {
       const response = await fetch(
-        `https://pocket-bookshelf.herokuapp.com/api/books/${userId}`
+        `https://pocket-bookshelf-production.up.railway.app/api/books/${userId}`
       )
       const data = await response.json()
       return data
@@ -55,7 +55,7 @@ class API {
 
     try {
       await fetch(
-        'https://pocket-bookshelf.herokuapp.com/api/books/add',
+        'https://pocket-bookshelf-production.up.railway.app/api/books/add',
         options
       )
     } catch (error) {
@@ -67,7 +67,7 @@ class API {
   async deleteFromDb(userId, id) {
     try {
       const response = await fetch(
-        `https://pocket-bookshelf.herokuapp.com/api/books/${userId}/${id}`,
+        `https://pocket-bookshelf-production.up.railway.app/api/books/${userId}/${id}`,
         {
           method: 'DELETE',
         }
@@ -90,7 +90,7 @@ class API {
     }
     try {
       const response = await fetch(
-        'https://pocket-bookshelf.herokuapp.com/api/books/update',
+        'https://pocket-bookshelf-production.up.railway.app/api/books/update',
         options
       )
       const data = await response.text()
